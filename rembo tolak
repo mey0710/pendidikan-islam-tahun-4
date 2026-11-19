@@ -9,7 +9,7 @@
 <style>
 body {
   margin: 0;
-  padding: 30px 10px;
+  padding: 20px 10px;
   font-family: Arial, sans-serif;
   background: transparent;
   overflow-x: hidden;
@@ -18,52 +18,66 @@ body {
 .scene {
   position: relative;
   width: 100%;
-  min-height: 260px;
+  min-height: 300px;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
 .kotak-teks {
-  width: 70%;
-  padding: 22px;
+  width: 75%;
+  box-sizing: border-box;
+  padding: 25px;
   text-align: center;
   border: 3px solid #FFD700;
   border-radius: 20px;
-  background: transparent;
+  background: #FFFDF5;
   color: #704214;
   opacity: 0;
-  animation: masukTeks 2s ease-out 1.5s forwards;
+  animation: masukTeks 2s ease-out 1s forwards;
 }
 
 .kotak-teks h2 {
-  color: #FFD700;
-  margin-top: 0;
+  color: #D6A600;
+  font-size: 24px;
 }
 
 .rembo {
   position: absolute;
-  width: 120px;
-  left: -140px;
-  bottom: 15px;
+  width: 115px;
+  left: -130px;
+  bottom: 10px;
   z-index: 2;
   animation: remboTolak 4s ease-in-out forwards;
 }
 
 @keyframes remboTolak {
-  0% { left: -140px; }
-  60% { left: 10%; }
-  100% { left: 10%; }
+  0% { left: -130px; }
+  60% { left: 8%; }
+  100% { left: 8%; }
 }
 
 @keyframes masukTeks {
   0% {
     opacity: 0;
-    transform: translateX(80px);
+    transform: translateX(100px);
   }
   100% {
     opacity: 1;
     transform: translateX(0);
+  }
+}
+
+@media (max-width: 500px) {
+  .kotak-teks {
+    width: 82%;
+    padding: 18px;
+  }
+  .kotak-teks h2 {
+    font-size: 19px;
+  }
+  .rembo {
+    width: 85px;
   }
 }
 </style>
@@ -76,15 +90,23 @@ body {
   <img src="rembo.png" class="rembo" alt="Rembo">
 
   <div class="kotak-teks">
+
     <h2>🌸 SALAM MESRA DARIPADA USTAZAH 🌸</h2>
 
     <p><b>Assalamualaikum warahmatullahi wabarakatuh!</b> 👋</p>
 
-    <p>Hai anak-anak yang dikasihi! Selamat datang ke laman pembelajaran Ustazah.</p>
+    <p>
+      Hai anak-anak yang dikasihi! Selamat datang ke laman
+      pembelajaran Ustazah.
+    </p>
 
-    <p>Semoga anak-anak sentiasa ceria dan bersemangat untuk belajar.</p>
+    <p>
+      Semoga anak-anak sentiasa ceria dan bersemangat
+      untuk belajar.
+    </p>
 
     <p><b>Jom kita belajar bersama-sama! 📚✨</b></p>
+
   </div>
 
 </div>
