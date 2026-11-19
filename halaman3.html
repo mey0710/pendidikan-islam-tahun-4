@@ -4,7 +4,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Misi 1 - Kenali Adab Memuliakan Tetamu</title>
+<title>Misi 1 - Jom Tonton!</title>
 
 <style>
 * {
@@ -14,66 +14,60 @@
 body {
     margin: 0;
     font-family: 'Trebuchet MS', Arial, sans-serif;
-    background: linear-gradient(135deg, #fff5c7, #d9f7d5);
-    color: #344536;
-    min-height: 100vh;
+    background: #eaf7e8;
+    color: #304d35;
 }
 
 header {
-    background: linear-gradient(120deg, #ffcf48, #ffec9e);
-    padding: 20px;
+    background: linear-gradient(135deg, #a8dfa0, #d8f3d2);
     text-align: center;
-    border-bottom: 5px solid #74bd69;
+    padding: 25px 15px;
+    border-bottom: 5px solid #68ae64;
 }
 
 header h1 {
-    margin: 5px 0;
-    color: #356b36;
-    font-size: 30px;
+    margin: 0;
+    font-size: 32px;
+    color: #286337;
 }
 
 header p {
-    margin: 5px;
-    font-size: 15px;
+    margin-bottom: 0;
+    font-size: 16px;
 }
 
 .container {
     max-width: 950px;
-    margin: 25px auto;
+    margin: 30px auto;
     padding: 15px;
 }
 
-.mission-label {
-    display: inline-block;
-    background: #4c9d50;
+.mission {
+    background: #4e9c5b;
     color: white;
-    padding: 9px 20px;
+    display: inline-block;
+    padding: 9px 22px;
     border-radius: 30px;
     font-weight: bold;
-    margin-bottom: 15px;
+    margin-bottom: 18px;
 }
 
-.main-card {
+.dialogue-card {
     background: white;
     border-radius: 25px;
     padding: 25px;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.12);
-    border: 3px solid #ffe18a;
-}
-
-.character-area {
     display: flex;
     align-items: center;
-    justify-content: center;
     gap: 25px;
-    flex-wrap: wrap;
-    margin-bottom: 20px;
+    box-shadow: 0 7px 18px rgba(0,0,0,0.10);
+    border: 3px solid #c6e8bf;
 }
 
-.character {
-    width: 190px;
-    height: 220px;
+.mail-picture {
+    width: 220px;
+    height: 250px;
     object-fit: contain;
+    flex-shrink: 0;
     animation: float 3s ease-in-out infinite;
 }
 
@@ -82,83 +76,86 @@ header p {
     50% { transform: translateY(-8px); }
 }
 
-.speech {
+.dialogue-box {
     flex: 1;
-    min-width: 230px;
-    background: #e9f8df;
-    border: 3px solid #8bc77e;
-    border-radius: 25px;
-    padding: 20px;
+    background: #eff9eb;
+    border: 3px solid #9bd18f;
+    border-radius: 22px;
+    padding: 22px;
+    min-height: 180px;
     position: relative;
-    font-size: 18px;
-    line-height: 1.6;
-    min-height: 150px;
+    animation: appear 0.4s ease;
 }
 
-.speech::before {
+@keyframes appear {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.dialogue-box::before {
     content: "";
     position: absolute;
     left: -15px;
-    top: 40px;
+    top: 45px;
     width: 25px;
     height: 25px;
-    background: #e9f8df;
-    border-left: 3px solid #8bc77e;
-    border-bottom: 3px solid #8bc77e;
+    background: #eff9eb;
+    border-left: 3px solid #9bd18f;
+    border-bottom: 3px solid #9bd18f;
     transform: rotate(45deg);
 }
 
 .speaker {
-    color: #36813c;
+    font-size: 22px;
     font-weight: bold;
-    font-size: 20px;
-    margin-bottom: 8px;
+    color: #398449;
+    margin-bottom: 12px;
 }
 
-.dialogue {
+.dialogue-text {
+    font-size: 18px;
+    line-height: 1.7;
     margin: 0;
 }
 
-.progress-area {
-    margin: 20px 0;
+.progress {
     text-align: center;
-}
-
-.progress-text {
+    margin: 20px 0;
     font-weight: bold;
-    margin-bottom: 10px;
+    color: #56845b;
 }
 
 .dots {
     display: flex;
     justify-content: center;
-    gap: 10px;
+    gap: 9px;
+    margin-top: 10px;
 }
 
 .dot {
-    width: 13px;
-    height: 13px;
-    background: #d6dfd3;
+    width: 12px;
+    height: 12px;
+    background: #cbdcc8;
     border-radius: 50%;
 }
 
 .dot.active {
-    background: #50a653;
-    transform: scale(1.25);
+    background: #4d9d58;
+    transform: scale(1.3);
 }
 
 .buttons {
     display: flex;
     justify-content: center;
     gap: 12px;
-    flex-wrap: wrap;
     margin-top: 20px;
+    flex-wrap: wrap;
 }
 
 button {
     border: none;
+    padding: 13px 25px;
     border-radius: 30px;
-    padding: 13px 23px;
     font-size: 16px;
     font-weight: bold;
     cursor: pointer;
@@ -167,121 +164,82 @@ button {
 
 button:hover {
     transform: translateY(-3px);
-    opacity: 0.9;
 }
 
-.next-btn {
-    background: #4c9d50;
+.previous {
+    background: #e3e9e1;
+    color: #415744;
+}
+
+.next {
+    background: #4c9b57;
     color: white;
 }
 
-.back-btn {
-    background: #e7e7e7;
-    color: #444;
-}
-
-.video-section {
-    margin-top: 30px;
-    background: #fff8dc;
-    border: 3px dashed #e9bd4e;
-    border-radius: 20px;
-    padding: 20px;
+.video-card {
+    margin-top: 35px;
+    background: white;
+    border-radius: 25px;
+    padding: 25px;
+    box-shadow: 0 7px 18px rgba(0,0,0,0.08);
     text-align: center;
+    border: 3px solid #c6e8bf;
 }
 
-.video-section h2 {
-    color: #477c3d;
+.video-card h2 {
+    color: #347b42;
+    margin-top: 0;
+}
+
+.video-card p {
+    line-height: 1.6;
 }
 
 .video-wrapper {
-    position: relative;
     width: 100%;
-    max-width: 650px;
-    margin: 15px auto;
+    max-width: 700px;
+    margin: 20px auto;
     aspect-ratio: 16 / 9;
 }
 
 .video-wrapper iframe {
     width: 100%;
     height: 100%;
-    border: 0;
+    border: none;
+    border-radius: 16px;
+}
+
+.tip {
+    background: #f0f8e9;
+    padding: 15px;
     border-radius: 15px;
-}
-
-.quiz-section {
-    margin-top: 30px;
-    background: #f0f8ff;
-    border-radius: 20px;
-    padding: 22px;
-    border: 3px solid #a8d4ef;
-}
-
-.quiz-section h2 {
-    text-align: center;
-    color: #35769b;
-}
-
-.question {
-    font-size: 18px;
-    font-weight: bold;
-    margin-bottom: 15px;
-}
-
-.answer {
-    display: block;
-    width: 100%;
-    background: white;
-    border: 2px solid #b5d9ed;
-    margin: 10px 0;
-    text-align: left;
-    border-radius: 12px;
-    color: #344536;
-}
-
-.answer:hover {
-    background: #e3f4ff;
-}
-
-.answer.correct {
-    background: #d8f6d7;
-    border-color: #4c9d50;
-}
-
-.answer.wrong {
-    background: #ffe0e0;
-    border-color: #e36b6b;
-}
-
-.feedback {
-    text-align: center;
-    font-weight: bold;
-    margin-top: 15px;
-    min-height: 25px;
+    margin-top: 18px;
+    color: #46754a;
+    line-height: 1.6;
 }
 
 footer {
     text-align: center;
-    padding: 20px;
-    color: #557252;
-    font-size: 14px;
+    padding: 22px;
+    color: #628267;
 }
 
-@media(max-width: 600px) {
-    header h1 {
-        font-size: 23px;
+@media(max-width: 650px) {
+    .dialogue-card {
+        flex-direction: column;
     }
 
-    .character {
-        width: 150px;
-        height: 170px;
+    .mail-picture {
+        width: 170px;
+        height: 190px;
     }
 
-    .speech {
-        min-width: 100%;
-    }
-
-    .speech::before {
+    .dialogue-box::before {
         display: none;
+    }
+
+    header h1 {
+        font-size: 25px;
     }
 }
 </style>
@@ -290,318 +248,144 @@ footer {
 <body>
 
 <header>
-    <h1>🌈 Misi 1: Kenali Adab Memuliakan Tetamu</h1>
-    <p>Jom belajar bersama-sama!</p>
+    <h1>📺 JOM TONTON!</h1>
+    <p>Misi 1 | Pembelajaran Pendidikan Islam Tahun 4</p>
 </header>
 
-<div class="container">
+<main class="container">
 
     <div style="text-align:center;">
-        <span class="mission-label">⭐ MISI 1</span>
+        <span class="mission">🌟 MISI 1</span>
     </div>
 
-    <div class="main-card">
+    <!-- DIALOG MAIL -->
+    <section class="dialogue-card">
 
-        <div class="character-area">
+        <img
+            src="mail.png"
+            alt="Mail"
+            class="mail-picture"
+        >
 
-            <!-- Gambar asal Mail -->
-            <img src="mail.png" alt="Watak Mail" class="character"
-                 onerror="this.alt='Gambar mail.png tidak dijumpai'; this.style.display='none';">
+        <div class="dialogue-box" id="dialogueBox">
 
-            <div class="speech">
-                <div class="speaker" id="speaker">MAIL:</div>
-                <p class="dialogue" id="dialogue">
-                    Assalamualaikum kawan-kawan! Hari ini Mail nak ajak kamu belajar tentang adab memuliakan tetamu. Kamu semua dah bersedia?
-                </p>
-            </div>
+            <div class="speaker">MAIL:</div>
+
+            <p class="dialogue-text" id="dialogueText">
+                Assalamualaikum kawan-kawan! Jom kita mulakan misi pertama!
+            </p>
 
         </div>
 
-        <div class="progress-area">
-            <div class="progress-text" id="progressText">Dialog 1 daripada 6</div>
-            <div class="dots" id="dots"></div>
-        </div>
+    </section>
 
-        <div class="buttons">
-            <button class="back-btn" onclick="previousDialogue()">⬅ Kembali</button>
-            <button class="next-btn" onclick="nextDialogue()" id="nextButton">
-                Seterusnya ➜
-            </button>
-        </div>
+    <div class="progress">
+        <span id="progressText">Dialog 1 daripada 4</span>
 
+        <div class="dots" id="dots"></div>
     </div>
 
-    <section class="video-section">
+    <div class="buttons">
+        <button class="previous" onclick="previousDialogue()">
+            ← Sebelum
+        </button>
+
+        <button class="next" id="nextButton" onclick="nextDialogue()">
+            Seterusnya →
+        </button>
+    </div>
+
+    <!-- VIDEO -->
+    <section class="video-card">
+
         <h2>🎬 Jom Tonton Video!</h2>
-        <p>Perhatikan video berikut untuk memahami adab memuliakan tetamu.</p>
+
+        <p>
+            Kawan-kawan, mari kita tonton video di bawah
+            untuk mengetahui lebih lanjut tentang adab memuliakan tetamu.
+        </p>
 
         <div class="video-wrapper">
             <iframe
                 src="https://www.youtube.com/embed/QuUmJaMXXg8"
-                title="Video Pembelajaran Memuliakan Tetamu"
+                title="Video pembelajaran"
                 allowfullscreen>
             </iframe>
         </div>
-    </section>
 
-    <section class="quiz-section">
-        <h2>🧠 Uji Minda Kamu!</h2>
-        <p style="text-align:center;">
-            Pilih jawapan yang paling tepat.
-        </p>
-
-        <div id="quiz">
-            <p class="question" id="question"></p>
-            <div id="answers"></div>
-            <p class="feedback" id="feedback"></p>
-            <div style="text-align:center;">
-                <button class="next-btn" id="quizNext" onclick="nextQuestion()" style="display:none;">
-                    Soalan Seterusnya ➜
-                </button>
-            </div>
+        <div class="tip">
+            💡 <strong>Ingat!</strong>
+            Tonton video dengan teliti dan fahami isi pembelajaran
+            sebelum meneruskan misi seterusnya.
         </div>
+
     </section>
 
-</div>
+</main>
 
 <footer>
-    🌼 Pendidikan Islam Tahun 4 | Adab Memuliakan Tetamu 🌼
+    🌿 Pendidikan Islam Tahun 4 | Selamat Belajar! 🌿
 </footer>
 
 <script>
 const dialogues = [
-    {
-        speaker: "MAIL:",
-        text: "Assalamualaikum kawan-kawan! Hari ini Mail nak ajak kamu belajar tentang adab memuliakan tetamu. Kamu semua dah bersedia?"
-    },
-    {
-        speaker: "MAIL:",
-        text: "Tahukah kamu? Tetamu ialah orang yang datang berkunjung ke rumah kita. Sebagai umat Islam, kita hendaklah melayan tetamu dengan baik."
-    },
-    {
-        speaker: "MAIL:",
-        text: "Adab pertama ialah menyambut tetamu dengan mesra. Kita hendaklah menunjukkan wajah yang ceria apabila tetamu datang."
-    },
-    {
-        speaker: "MAIL:",
-        text: "Adab kedua ialah memberikan salam dan bertanya khabar. Jangan lupa senyum dan bercakap dengan sopan!"
-    },
-    {
-        speaker: "MAIL:",
-        text: "Adab ketiga dan keempat pula ialah menyediakan tempat yang selesa serta menghidangkan juadah mengikut kemampuan kita."
-    },
-    {
-        speaker: "MAIL:",
-        text: "Akhir sekali, kita hendaklah melayan tetamu dengan baik dan ikhlas. Ingat ya, memuliakan tetamu merupakan amalan yang terpuji!"
-    }
+    "Assalamualaikum kawan-kawan! Jom kita mulakan misi pertama!",
+
+    "Hari ini kita akan belajar tentang hadis memuliakan tetamu. Kamu tahu tak, apakah maksud tetamu?",
+
+    "Tetamu ialah orang yang datang berkunjung ke rumah kita. Sebagai umat Islam, kita hendaklah memuliakan tetamu dengan adab yang baik.",
+
+    "Jadi, jom kita tonton video ini bersama-sama! Perhatikan setiap penerangan supaya kamu dapat menyelesaikan misi ini. Selamat menonton!"
 ];
 
-let currentDialogue = 0;
+let current = 0;
 
-function renderDialogue() {
-    document.getElementById("speaker").textContent =
-        dialogues[currentDialogue].speaker;
+function updateDialogue() {
+    const box = document.getElementById("dialogueBox");
 
-    document.getElementById("dialogue").textContent =
-        dialogues[currentDialogue].text;
+    box.style.animation = "none";
+    void box.offsetWidth;
+    box.style.animation = "appear 0.4s ease";
+
+    document.getElementById("dialogueText").textContent =
+        dialogues[current];
 
     document.getElementById("progressText").textContent =
-        "Dialog " + (currentDialogue + 1) + " daripada " + dialogues.length;
+        "Dialog " + (current + 1) + " daripada " + dialogues.length;
 
     const dots = document.getElementById("dots");
     dots.innerHTML = "";
 
     dialogues.forEach((item, index) => {
         const dot = document.createElement("span");
-        dot.className = "dot" + (index === currentDialogue ? " active" : "");
+        dot.className = "dot" + (index === current ? " active" : "");
         dots.appendChild(dot);
     });
 
     document.getElementById("nextButton").textContent =
-        currentDialogue === dialogues.length - 1
+        current === dialogues.length - 1
         ? "Selesai ✓"
-        : "Seterusnya ➜";
+        : "Seterusnya →";
 }
 
 function nextDialogue() {
-    if (currentDialogue < dialogues.length - 1) {
-        currentDialogue++;
-        renderDialogue();
+    if (current < dialogues.length - 1) {
+        current++;
+        updateDialogue();
     } else {
-        document.getElementById("dialogue").textContent =
-            "Syabas! Kamu telah selesai membaca pengenalan Misi 1. Sekarang, jom jawab soalan di bawah!";
+        document.getElementById("dialogueText").textContent =
+            "Syabas! Kamu telah selesai membaca pengenalan. Sekarang, tonton video untuk meneruskan pembelajaran!";
     }
 }
 
 function previousDialogue() {
-    if (currentDialogue > 0) {
-        currentDialogue--;
-        renderDialogue();
+    if (current > 0) {
+        current--;
+        updateDialogue();
     }
 }
 
-renderDialogue();
-
-const questions = [
-    {
-        question: "Apakah yang perlu kita lakukan apabila tetamu datang ke rumah?",
-        answers: [
-            "Menyambut tetamu dengan mesra",
-            "Membiarkan tetamu berdiri",
-            "Berpura-pura tidak nampak"
-        ],
-        correct: 0
-    },
-    {
-        question: "Apakah adab ketika bertemu dengan tetamu?",
-        answers: [
-            "Bercakap dengan kasar",
-            "Memberikan salam dan bertanya khabar",
-            "Tidak menghiraukan tetamu"
-        ],
-        correct: 1
-    },
-    {
-        question: "Apakah yang boleh kita sediakan untuk tetamu?",
-        answers: [
-            "Tempat yang selesa",
-            "Tempat yang kotor",
-            "Barang yang tidak diperlukan"
-        ],
-        correct: 0
-    },
-    {
-        question: "Bagaimanakah kita menghidangkan juadah kepada tetamu?",
-        answers: [
-            "Dengan marah",
-            "Dengan ikhlas mengikut kemampuan",
-            "Dengan perasaan terpaksa"
-        ],
-        correct: 1
-    },
-    {
-        question: "Mengapakah kita perlu memuliakan tetamu?",
-        answers: [
-            "Supaya mendapat pujian sahaja",
-            "Kerana ia amalan yang terpuji",
-            "Supaya tetamu cepat pulang"
-        ],
-        correct: 1
-    }
-];
-
-let questionIndex = 0;
-let score = 0;
-let answered = false;
-
-function loadQuestion() {
-    answered = false;
-
-    const q = questions[questionIndex];
-
-    document.getElementById("question").textContent =
-        "Soalan " + (questionIndex + 1) + ": " + q.question;
-
-    document.getElementById("feedback").textContent = "";
-    document.getElementById("quizNext").style.display = "none";
-
-    const answersDiv = document.getElementById("answers");
-    answersDiv.innerHTML = "";
-
-    q.answers.forEach((answer, index) => {
-        const button = document.createElement("button");
-        button.className = "answer";
-        button.textContent = String.fromCharCode(65 + index) + ". " + answer;
-
-        button.onclick = () => checkAnswer(index, button);
-
-        answersDiv.appendChild(button);
-    });
-}
-
-function checkAnswer(selected, button) {
-    if (answered) return;
-
-    answered = true;
-
-    const correct = questions[questionIndex].correct;
-    const allButtons = document.querySelectorAll(".answer");
-
-    allButtons.forEach((btn, index) => {
-        btn.disabled = true;
-
-        if (index === correct) {
-            btn.classList.add("correct");
-        }
-    });
-
-    if (selected === correct) {
-        score++;
-        document.getElementById("feedback").textContent =
-            "🎉 Betul! Syabas, jawapan kamu tepat!";
-    } else {
-        button.classList.add("wrong");
-        document.getElementById("feedback").textContent =
-            "Belum tepat. Cuba ingat semula penerangan Mail ya!";
-    }
-
-    document.getElementById("quizNext").style.display = "inline-block";
-
-    document.getElementById("quizNext").textContent =
-        questionIndex === questions.length - 1
-        ? "Lihat Keputusan ⭐"
-        : "Soalan Seterusnya ➜";
-}
-
-function nextQuestion() {
-    if (questionIndex < questions.length - 1) {
-        questionIndex++;
-        loadQuestion();
-    } else {
-        showResult();
-    }
-}
-
-function showResult() {
-    const quiz = document.getElementById("quiz");
-
-    quiz.innerHTML = `
-        <div style="text-align:center;">
-            <h2>🎊 Tahniah!</h2>
-            <p style="font-size:22px;">Kamu telah menyelesaikan kuiz Misi 1!</p>
-            <p style="font-size:25px;font-weight:bold;color:#36813c;">
-                Markah: ${score} / ${questions.length}
-            </p>
-            <p>${score === questions.length
-                ? "Hebat! Semua jawapan kamu betul!"
-                : "Teruskan usaha! Kamu pasti boleh buat lebih baik."}
-            </p>
-            <button class="next-btn" onclick="restartQuiz()">
-                Cuba Lagi 🔄
-            </button>
-        </div>
-    `;
-}
-
-function restartQuiz() {
-    questionIndex = 0;
-    score = 0;
-
-    document.getElementById("quiz").innerHTML = `
-        <p class="question" id="question"></p>
-        <div id="answers"></div>
-        <p class="feedback" id="feedback"></p>
-        <div style="text-align:center;">
-            <button class="next-btn" id="quizNext" onclick="nextQuestion()" style="display:none;">
-                Soalan Seterusnya ➜
-            </button>
-        </div>
-    `;
-
-    loadQuestion();
-}
-
-loadQuestion();
+updateDialogue();
 </script>
 
 </body>
