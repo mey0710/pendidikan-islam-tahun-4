@@ -1,17 +1,86 @@
 
-<!-- DIALOG MAIL SATU DEMI SATU -->
+<style>
+.mail-area {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  max-width: 650px;
+  margin: 25px auto;
+}
+
+.mail-picture {
+  width: 160px;
+  height: 190px;
+  object-fit: contain;
+}
+
+.mail-dialogue {
+  flex: 1;
+  background: #fff2c6;
+  border: 3px solid #f4cd58;
+  border-radius: 22px;
+  padding: 20px;
+  text-align: left;
+  box-shadow: 0 5px 12px #00000015;
+}
+
+.mail-speaker {
+  color: #d18417;
+  font-weight: bold;
+  font-size: 20px;
+  margin-bottom: 12px;
+}
+
+#mailText {
+  font-size: 17px;
+  line-height: 1.7;
+  min-height: 90px;
+  color: #59451f;
+}
+
+.mail-next {
+  background: #35a75b;
+  color: white;
+  border: none;
+  padding: 11px 22px;
+  border-radius: 25px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+@media(max-width:500px) {
+  .mail-area {
+    flex-direction: column;
+  }
+  .mail-picture {
+    width: 130px;
+    height: 145px;
+  }
+  .mail-dialogue {
+    width: 100%;
+  }
+}
+</style>
+
 <div class="mail-area">
 
-  <img src="mail.png" alt="Mail">
+  <!-- GAMBAR MAIL -->
+  <img
+    src="mail.png"
+    alt="Watak Mail"
+    class="mail-picture"
+  >
 
-  <div class="dialogue">
-    <div class="speaker">💬 MAIL:</div>
+  <!-- GELEMBUNG DIALOG -->
+  <div class="mail-dialogue">
 
-    <p id="mailDialogue">
-      Hai kawan-kawan! 👋
-    </p>
+    <div class="mail-speaker">💬 MAIL:</div>
 
-    <button onclick="nextDialogue()" id="nextBtn">
+    <p id="mailText">Hai kawan-kawan! 👋</p>
+
+    <button class="mail-next" id="mailNext"
+      onclick="nextMailDialogue()">
       Seterusnya ➜
     </button>
 
@@ -19,7 +88,7 @@
 </div>
 
 <script>
-const dialogues = [
+const mailDialogues = [
   "Hai kawan-kawan! 👋",
   "Hari ini Mail nak ajak kamu semua tonton satu video.",
   "Cuba perhatikan video ini dengan teliti, ya!",
@@ -27,19 +96,19 @@ const dialogues = [
   "Jom tonton bersama-sama! 📺"
 ];
 
-let currentDialogue = 0;
+let mailIndex = 0;
 
-function nextDialogue() {
-  currentDialogue++;
+function nextMailDialogue() {
+  mailIndex++;
 
-  if (currentDialogue < dialogues.length) {
-    document.getElementById("mailDialogue").textContent =
-      dialogues[currentDialogue];
+  if (mailIndex < mailDialogues.length) {
+    document.getElementById("mailText").textContent =
+      mailDialogues[mailIndex];
   } else {
-    document.getElementById("mailDialogue").textContent =
-      "Bagus! Jom kita tonton video sekarang! 🎉";
+    document.getElementById("mailText").textContent =
+      "Bagus kawan-kawan! Sekarang jom kita tonton video! 🎉";
 
-    document.getElementById("nextBtn").style.display = "none";
+    document.getElementById("mailNext").style.display = "none";
   }
 }
 </script>
