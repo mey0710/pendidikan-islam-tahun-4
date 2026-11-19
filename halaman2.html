@@ -23,7 +23,6 @@ body {
   max-width: 850px;
   margin: auto;
   text-align: center;
-  background: transparent;
 }
 
 h1 {
@@ -48,9 +47,9 @@ h1 {
 .character {
   width: 40%;
   max-width: 210px;
-  transition: 0.3s ease;
   opacity: 0.55;
   transform: scale(0.92);
+  transition: 0.4s ease;
 }
 
 .character img {
@@ -96,7 +95,6 @@ button {
   font-size: 17px;
   font-weight: bold;
   cursor: pointer;
-  margin: 10px;
   transition: 0.2s;
 }
 
@@ -105,8 +103,9 @@ button:hover {
   transform: scale(1.04);
 }
 
-#nextButton {
+#replayButton {
   display: none;
+  margin-top: 12px;
   background: #69ad72;
 }
 
@@ -159,8 +158,8 @@ button:hover {
     ▶ MULA DENGAR DIALOG
   </button>
 
-  <button id="nextButton" onclick="goNext()">
-    HALAMAN SETERUSNYA ➜
+  <button id="replayButton" onclick="startDialogue()">
+    ↻ DENGAR SEMULA
   </button>
 
 </div>
@@ -194,6 +193,7 @@ let current = 0;
 let timer;
 
 function showDialogue() {
+
   const item = dialogues[current];
 
   document.getElementById("dialogue").textContent =
@@ -214,26 +214,25 @@ function showDialogue() {
 }
 
 function startDialogue() {
+
+  clearTimeout(timer);
   current = 0;
 
   document.getElementById("startButton").style.display = "none";
-  document.getElementById("nextButton").style.display = "none";
+  document.getElementById("replayButton").style.display = "none";
 
   showDialogue();
 }
 
 function finishDialogue() {
+
   document.getElementById("dialogue").textContent =
-    "Hebat! Sekarang, mari kita berkenalan dengan guru pula! 😊";
+    "Terima kasih kerana sudi berkenalan! Jom kita kenali guru kita pula! 😊";
 
   document.getElementById("upin").classList.remove("active");
   document.getElementById("ipin").classList.remove("active");
 
-  document.getElementById("nextButton").style.display = "inline-block";
-}
-
-function goNext() {
-  window.location.href = "halaman3.html";
+  document.getElementById("replayButton").style.display = "inline-block";
 }
 
 </script>
