@@ -11,15 +11,17 @@ body {
   margin: 0;
   background: transparent;
   font-family: Arial, sans-serif;
-  overflow: hidden;
+  overflow: visible;
 }
 
 .kawasan {
   position: relative;
-  min-height: 400px;
+  min-height: 500px;
+  padding: 20px 0 40px;
   display: flex;
   align-items: center;
   justify-content: center;
+  overflow: visible;
 }
 
 /* PAPAN KAYU */
@@ -68,6 +70,7 @@ body {
 
 /* BUTANG AUDIO */
 .butang-audio {
+  display: inline-block;
   background: #ffdf55;
   color: #593313;
   border: 3px solid #75421e;
@@ -117,6 +120,30 @@ body {
     left: 5%;
   }
 }
+
+/* PAPARAN TELEFON */
+@media (max-width: 600px) {
+  .papan {
+    width: 90%;
+    padding: 22px 15px;
+  }
+
+  .papan h2 {
+    font-size: 20px;
+  }
+
+  .papan p {
+    font-size: 15px;
+  }
+
+  .rembo {
+    width: 85px;
+  }
+
+  .butang-audio {
+    font-size: 14px;
+  }
+}
 </style>
 </head>
 
@@ -142,7 +169,7 @@ body {
       🔊 Dengar Ucapan Ustazah
     </button>
 
-    <audio id="audioUstazah" src="./ucapan-ustazah%20.mp3..m4a"></audio>
+    <audio id="audioUstazah" src="./ucapan-ustazah%20.mp3..m4a" preload="auto"></audio>
 
   </div>
 
@@ -157,7 +184,7 @@ function mainkanUcapan() {
   audio.currentTime = 0;
 
   audio.play().catch(function() {
-    alert("Audio tidak dapat dimainkan. Sila semak fail rakaman.");
+    alert("Audio tidak dapat dimainkan. Sila semak nama dan format fail rakaman.");
   });
 }
 </script>
