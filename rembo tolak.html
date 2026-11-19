@@ -9,75 +9,91 @@
 <style>
 body {
   margin: 0;
-  padding: 20px 10px;
-  font-family: Arial, sans-serif;
   background: transparent;
-  overflow-x: hidden;
+  font-family: Arial, sans-serif;
+  overflow: hidden;
 }
 
-.scene {
+.kawasan {
   position: relative;
-  width: 100%;
-  min-height: 300px;
+  min-height: 350px;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-.kotak-teks {
+/* Papan kayu */
+.papan {
+  position: relative;
+  z-index: 1;
   width: 75%;
+  max-width: 650px;
+  padding: 28px 25px;
   box-sizing: border-box;
-  padding: 25px;
   text-align: center;
-  border: 3px solid #FFD700;
-  border-radius: 20px;
-  background: #FFFDF5;
-  color: #704214;
+  color: #fff8df;
+  border: 9px solid #75421e;
+  border-radius: 12px;
+  background:
+    repeating-linear-gradient(
+      0deg,
+      rgba(80, 38, 12, 0.18) 0px,
+      rgba(80, 38, 12, 0.18) 3px,
+      transparent 3px,
+      transparent 17px
+    ),
+    linear-gradient(135deg, #bd8247, #8b572b, #c18a50);
+  box-shadow: 5px 8px 14px #0005;
   opacity: 0;
-  animation: masukTeks 2s ease-out 1s forwards;
+  animation: papanMasuk 1.5s ease-out forwards;
+  animation-delay: 0.5s;
 }
 
-.kotak-teks h2 {
-  color: #D6A600;
-  font-size: 24px;
+.papan h2 {
+  color: #ffdf55;
+  font-size: 25px;
+  margin: 5px 0 18px;
+  text-shadow: 2px 2px 3px #4b260e;
 }
 
+.papan p {
+  font-size: 17px;
+  line-height: 1.6;
+  margin: 9px 0;
+  font-weight: bold;
+  text-shadow: 1px 1px 2px #4b260e;
+}
+
+/* Rembo */
 .rembo {
   position: absolute;
-  width: 115px;
-  left: -130px;
-  bottom: 10px;
   z-index: 2;
-  animation: remboTolak 4s ease-in-out forwards;
+  width: 125px;
+  height: auto;
+  left: -150px;
+  bottom: 35px;
+  animation: remboMasuk 2s ease-out forwards;
 }
 
-@keyframes remboTolak {
-  0% { left: -130px; }
-  60% { left: 8%; }
-  100% { left: 8%; }
-}
-
-@keyframes masukTeks {
-  0% {
+/* Animasi papan */
+@keyframes papanMasuk {
+  from {
     opacity: 0;
-    transform: translateX(100px);
+    transform: translateX(120px);
   }
-  100% {
+  to {
     opacity: 1;
     transform: translateX(0);
   }
 }
 
-@media (max-width: 500px) {
-  .kotak-teks {
-    width: 82%;
-    padding: 18px;
+/* Animasi Rembo */
+@keyframes remboMasuk {
+  from {
+    left: -150px;
   }
-  .kotak-teks h2 {
-    font-size: 19px;
-  }
-  .rembo {
-    width: 85px;
+  to {
+    left: 5%;
   }
 }
 </style>
@@ -85,29 +101,24 @@ body {
 
 <body>
 
-<div class="scene">
+<div class="kawasan">
 
-  <img src="rembo.png" class="rembo" alt="Rembo">
-
-  <div class="kotak-teks">
-
+  <div class="papan">
     <h2>🌸 SALAM MESRA DARIPADA USTAZAH 🌸</h2>
 
-    <p><b>Assalamualaikum warahmatullahi wabarakatuh!</b> 👋</p>
+    <p>Assalamualaikum warahmatullahi wabarakatuh! 👋</p>
 
-    <p>
-      Hai anak-anak yang dikasihi! Selamat datang ke laman
-      pembelajaran Ustazah.
-    </p>
+    <p>Hai anak-anak yang dikasihi!</p>
 
-    <p>
-      Semoga anak-anak sentiasa ceria dan bersemangat
-      untuk belajar.
-    </p>
+    <p>Selamat datang ke laman pembelajaran Ustazah.</p>
 
-    <p><b>Jom kita belajar bersama-sama! 📚✨</b></p>
+    <p>Semoga anak-anak sentiasa ceria dan bersemangat untuk belajar.</p>
 
+    <p>Jom kita belajar bersama-sama! 📚✨</p>
   </div>
+
+  <img src="./rembo.png" class="rembo" alt="Rembo"
+       onerror="this.alt='Gambar Rembo tidak dijumpai'; this.style.background='#fff';">
 
 </div>
 
