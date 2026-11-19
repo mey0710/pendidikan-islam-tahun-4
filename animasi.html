@@ -13,136 +13,215 @@
 
 body {
   margin: 0;
-  padding: 25px 12px;
+  padding: 20px 10px;
   font-family: Arial, sans-serif;
-  background: #e8f8dc;
   text-align: center;
+  background: #e7f8dc;
 }
 
 h1 {
-  color: #287d3d;
-  font-size: 25px;
+  color: #267d3d;
+  font-size: 26px;
+}
+
+.subtitle {
+  color: #56745b;
+  font-size: 15px;
 }
 
 .scene {
   position: relative;
-  width: 100%;
   max-width: 950px;
-  height: 340px;
+  height: 380px;
   margin: 25px auto;
   overflow: hidden;
-  border: 4px solid white;
-  border-radius: 22px;
+  border: 5px solid white;
+  border-radius: 25px;
   background: linear-gradient(
-    to bottom,
-    #8bd5ff 0%,
-    #dff5ff 68%,
-    #8dd36c 68%,
-    #5bab42 100%
+    #83d4ff 0%,
+    #d9f3ff 65%,
+    #9bdc76 65%,
+    #5eb64d 100%
   );
 }
 
+/* MATAHARI DAN AWAN */
+
 .sun {
   position: absolute;
-  top: 15px;
-  right: 45px;
-  font-size: 48px;
+  right: 70px;
+  top: 20px;
+  font-size: 55px;
 }
 
 .cloud {
   position: absolute;
   top: 35px;
-  font-size: 40px;
+  font-size: 45px;
+  animation: cloudMove 12s linear infinite;
 }
 
-.cloud1 { left: 15%; }
-.cloud2 { left: 55%; }
-
-.house {
-  position: absolute;
-  bottom: 55px;
-  right: 12%;
-  font-size: 65px;
+.cloud.one {
+  left: 10%;
 }
 
-.tree {
-  position: absolute;
-  bottom: 55px;
-  left: 8%;
-  font-size: 65px;
+.cloud.two {
+  left: 65%;
+  animation-delay: -6s;
 }
 
-.characters {
+@keyframes cloudMove {
+  from { transform: translateX(0); }
+  to { transform: translateX(150px); }
+}
+
+/* LATAR KAMPUNG BERGERAK */
+
+.village {
   position: absolute;
-  bottom: 35px;
-  left: -280px;
+  bottom: 45px;
+  width: 200%;
+  height: 130px;
   display: flex;
   align-items: flex-end;
-  gap: 3px;
-  white-space: nowrap;
-  animation: running 8s linear infinite;
+  justify-content: space-around;
+  font-size: 75px;
+  animation: villageMove 7s linear infinite;
+}
+
+@keyframes villageMove {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+/* WATAK */
+
+.chase-group {
+  position: absolute;
+  bottom: 38px;
+  left: -300px;
+  display: flex;
+  align-items: flex-end;
+  gap: 8px;
   z-index: 3;
+  animation: chaseMove 9s linear infinite;
+}
+
+.runner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
 }
 
 .character {
-  font-size: 75px;
   display: inline-block;
-  animation: bounce 0.35s infinite alternate;
+  font-size: 78px;
+  animation: runningBounce 0.28s infinite alternate;
 }
 
 .rembo {
-  font-size: 80px;
+  font-size: 85px;
   animation-delay: 0.1s;
 }
 
 .upin {
-  animation-delay: 0.2s;
+  animation-delay: 0.15s;
 }
 
 .ipin {
-  animation-delay: 0.3s;
+  animation-delay: 0.25s;
 }
 
-@keyframes running {
+.name {
+  font-size: 12px;
+  font-weight: bold;
+  color: #245c31;
+  background: white;
+  padding: 4px 8px;
+  border-radius: 12px;
+  margin-bottom: 3px;
+}
+
+@keyframes chaseMove {
   0% {
-    left: -280px;
+    left: -300px;
   }
   100% {
     left: 110%;
   }
 }
 
-@keyframes bounce {
+@keyframes runningBounce {
   from {
-    transform: translateY(0) rotate(-5deg);
+    transform: translateY(0) rotate(-8deg);
   }
   to {
-    transform: translateY(-14px) rotate(5deg);
+    transform: translateY(-18px) rotate(8deg);
   }
 }
+
+/* TANAH */
 
 .ground {
   position: absolute;
   bottom: 0;
   width: 100%;
-  height: 35px;
-  background: #55a344;
-  border-top: 4px solid #408c32;
+  height: 38px;
+  background: #56a944;
+  border-top: 5px solid #438d35;
+  z-index: 4;
+}
+
+/* BUTANG */
+
+.controls {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin: 20px;
 }
 
 button {
-  background: #2fa451;
-  color: white;
-  padding: 13px 28px;
+  padding: 13px 25px;
   border: none;
   border-radius: 25px;
-  font-size: 16px;
+  background: #2eaa55;
+  color: white;
   font-weight: bold;
+  font-size: 15px;
   cursor: pointer;
 }
 
 button:hover {
-  background: #207c3b;
+  background: #217c3c;
+}
+
+.stop {
+  background: #e58b36;
+}
+
+.stop:hover {
+  background: #c76d20;
+}
+
+@media(max-width: 500px) {
+  .scene {
+    height: 300px;
+  }
+
+  .character {
+    font-size: 58px;
+  }
+
+  .rembo {
+    font-size: 65px;
+  }
+
+  .village {
+    font-size: 55px;
+  }
 }
 </style>
 </head>
@@ -151,25 +230,49 @@ button:hover {
 
 <h1>🏃 REMBO KEJAR UPIN DAN IPIN! 🏃</h1>
 
+<p class="subtitle">
+Alamak! Cepat lari! Rembo sedang mengejar mereka! 😂
+</p>
+
 <div class="scene" id="scene">
 
   <div class="sun">☀️</div>
-  <div class="cloud cloud1">☁️</div>
-  <div class="cloud cloud2">☁️</div>
 
-  <div class="tree">🌳</div>
-  <div class="house">🏡</div>
+  <div class="cloud one">☁️</div>
+  <div class="cloud two">☁️</div>
 
-  <div class="characters" id="characters">
+  <!-- LATAR KAMPUNG -->
+  <div class="village">
+    <span>🌳</span>
+    <span>🏡</span>
+    <span>🌴</span>
+    <span>🏠</span>
+    <span>🌳</span>
+    <span>🏡</span>
+    <span>🌴</span>
+    <span>🏠</span>
+  </div>
 
-    <!-- REMBO MENGEJAR -->
-    <span class="character rembo">🐕</span>
+  <!-- WATAK BERLARI -->
+  <div class="chase-group" id="chaseGroup">
+
+    <!-- REMBO DI BELAKANG -->
+    <div class="runner">
+      <span class="name">REMBO</span>
+      <span class="character rembo">🪿</span>
+    </div>
 
     <!-- UPIN -->
-    <span class="character upin">👦🏻</span>
+    <div class="runner">
+      <span class="name">UPIN</span>
+      <span class="character upin">🧢👦🏻</span>
+    </div>
 
     <!-- IPIN -->
-    <span class="character ipin">👦🏻</span>
+    <div class="runner">
+      <span class="name">IPIN</span>
+      <span class="character ipin">👦🏻</span>
+    </div>
 
   </div>
 
@@ -177,17 +280,46 @@ button:hover {
 
 </div>
 
-<button onclick="restartAnimation()">
-  🔄 Ulang Animasi
-</button>
+<!-- KAWALAN ANIMASI -->
+<div class="controls">
+
+  <button onclick="startAnimation()">
+    ▶️ Mula Lari
+  </button>
+
+  <button class="stop" onclick="stopAnimation()">
+    ⏸ Berhenti
+  </button>
+
+  <button onclick="restartAnimation()">
+    🔄 Ulang Semula
+  </button>
+
+</div>
 
 <script>
-function restartAnimation() {
-  const characters = document.getElementById("characters");
+const group = document.getElementById("chaseGroup");
+const village = document.querySelector(".village");
 
-  characters.style.animation = "none";
-  void characters.offsetWidth;
-  characters.style.animation = "running 8s linear infinite";
+function startAnimation() {
+  group.style.animationPlayState = "running";
+  village.style.animationPlayState = "running";
+}
+
+function stopAnimation() {
+  group.style.animationPlayState = "paused";
+  village.style.animationPlayState = "paused";
+}
+
+function restartAnimation() {
+  group.style.animation = "none";
+  village.style.animation = "none";
+
+  void group.offsetWidth;
+  void village.offsetWidth;
+
+  group.style.animation = "chaseMove 9s linear infinite";
+  village.style.animation = "villageMove 7s linear infinite";
 }
 </script>
 
