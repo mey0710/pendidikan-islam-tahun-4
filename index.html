@@ -1,0 +1,218 @@
+
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pendidikan Islam Tahun 4</title>
+
+<style>
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background: transparent;
+  font-family: Arial, sans-serif;
+}
+
+.kampung {
+  position: relative;
+  width: 100%;
+  height: 650px;
+  overflow: hidden;
+  background-image: url("https://lh3.googleusercontent.com/d/12H7vBoKpv5cKcmAD6gFQYwSoihUVFveu");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+/* TAJUK */
+.tajuk {
+  position: absolute;
+  top: 22%;
+  width: 100%;
+  text-align: center;
+  z-index: 5;
+  color: white;
+  text-shadow: 3px 3px 5px #444;
+}
+
+.tajuk h1 {
+  font-size: clamp(30px, 6vw, 65px);
+  margin: 5px;
+  font-weight: 900;
+}
+
+.tajuk h2 {
+  font-size: 45px;
+  color: #ffe45c;
+  margin: 8px;
+}
+
+.tajuk p {
+  display: inline-block;
+  background: #168c54;
+  padding: 12px 30px;
+  border-radius: 30px;
+  font-size: 22px;
+  font-weight: bold;
+  margin: 10px;
+}
+
+/* BANNER */
+.banner {
+  position: absolute;
+  top: 72%;
+  left: -100%;
+  background: #ffcf40;
+  color: #603600;
+  padding: 18px 35px;
+  border: 4px solid white;
+  border-radius: 50px;
+  font-size: clamp(18px, 3vw, 30px);
+  font-weight: bold;
+  white-space: nowrap;
+  z-index: 10;
+  animation: masuk 2s ease forwards;
+}
+
+@keyframes masuk {
+  to {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}
+
+/* AWAN BERGERAK */
+.awan {
+  position: absolute;
+  font-size: 65px;
+  z-index: 2;
+  white-space: nowrap;
+  animation: awanGerak 30s linear infinite;
+}
+
+.awan1 { top: 5%; left: -150px; }
+.awan2 { top: 15%; left: -250px; animation-delay: 5s; }
+.awan3 { top: 25%; left: -180px; animation-delay: 10s; }
+.awan4 { top: 8%; left: -300px; animation-delay: 15s; }
+.awan5 { top: 30%; left: -200px; animation-delay: 20s; }
+.awan6 { top: 18%; left: -350px; animation-delay: 25s; }
+.awan7 { top: 38%; left: -200px; animation-delay: 8s; }
+.awan8 { top: 45%; left: -300px; animation-delay: 18s; }
+
+@keyframes awanGerak {
+  from { transform: translateX(0); }
+  to { transform: translateX(130vw); }
+}
+
+/* BURUNG TERBANG */
+.burung {
+  position: absolute;
+  font-size: 30px;
+  z-index: 4;
+  left: -80px;
+  animation: burungTerbang 18s linear infinite;
+}
+
+.burung1 { top: 35%; }
+.burung2 { top: 42%; animation-delay: 4s; }
+.burung3 { top: 28%; animation-delay: 8s; }
+.burung4 { top: 50%; animation-delay: 12s; }
+
+@keyframes burungTerbang {
+  0% {
+    left: -80px;
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-25px);
+  }
+  100% {
+    left: 110%;
+    transform: translateY(10px);
+  }
+}
+
+/* BUNGA BERGERAK */
+.bunga {
+  position: absolute;
+  z-index: 6;
+  font-size: 30px;
+  animation: bungaGerak 3s ease-in-out infinite alternate;
+}
+
+.bunga1 { left: 8%; bottom: 12%; }
+.bunga2 { left: 22%; bottom: 18%; animation-delay: 0.5s; }
+.bunga3 { left: 40%; bottom: 10%; animation-delay: 1s; }
+.bunga4 { right: 10%; bottom: 15%; animation-delay: 1.5s; }
+.bunga5 { right: 25%; bottom: 8%; animation-delay: 2s; }
+.bunga6 { right: 42%; bottom: 20%; animation-delay: 0.8s; }
+
+@keyframes bungaGerak {
+  from { transform: translateY(0) rotate(-10deg); }
+  to { transform: translateY(-15px) rotate(10deg); }
+}
+
+/* SELAMAT DATANG */
+.mula {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #168c54;
+  color: white;
+  padding: 12px 30px;
+  border-radius: 30px;
+  font-weight: bold;
+  z-index: 10;
+}
+</style>
+</head>
+
+<body>
+
+<div class="kampung">
+
+  <div class="awan awan1">☁️</div>
+  <div class="awan awan2">☁️</div>
+  <div class="awan awan3">☁️</div>
+  <div class="awan awan4">☁️</div>
+  <div class="awan awan5">☁️</div>
+  <div class="awan awan6">☁️</div>
+  <div class="awan awan7">☁️</div>
+  <div class="awan awan8">☁️</div>
+
+  <div class="burung burung1">🐦</div>
+  <div class="burung burung2">🐦</div>
+  <div class="burung burung3">🐦</div>
+  <div class="burung burung4">🐦</div>
+
+  <div class="bunga bunga1">🌼</div>
+  <div class="bunga bunga2">🌸</div>
+  <div class="bunga bunga3">🌻</div>
+  <div class="bunga bunga4">🌼</div>
+  <div class="bunga bunga5">🌷</div>
+  <div class="bunga bunga6">🌸</div>
+
+  <div class="tajuk">
+    <h1>PENDIDIKAN ISLAM</h1>
+    <h2>TAHUN 4</h2>
+    <p>BIDANG HADIS</p>
+  </div>
+
+  <div class="banner">
+    🌸 JOM BERADAB BERSAMA 🌸
+  </div>
+
+  <div class="mula">
+    SELAMAT DATANG!
+  </div>
+
+</div>
+
+</body>
+</html>
