@@ -79,6 +79,7 @@ h1 {
   line-height: 1.6;
   position: relative;
   flex: 1;
+  min-height: 170px;
 }
 
 .bubble:before {
@@ -89,6 +90,26 @@ h1 {
   border-top: 12px solid transparent;
   border-bottom: 12px solid transparent;
   border-right: 17px solid #f3c75e;
+}
+
+#dialogText {
+  min-height: 55px;
+}
+
+#nextBtn {
+  background: #f4bd43;
+  color: white;
+  border: none;
+  padding: 12px 22px;
+  border-radius: 20px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+#nextBtn:hover {
+  background: #d68b16;
 }
 
 .video-title {
@@ -125,7 +146,7 @@ iframe {
 @keyframes muncul {
   from {
     opacity: 0;
-    transform: translateY(20px);
+    transform: translateY(15px);
   }
   to {
     opacity: 1;
@@ -173,12 +194,14 @@ iframe {
 
     <div class="bubble">
       <strong>MAIL:</strong>
-      <p>
+
+      <p id="dialogText">
         Hai, kawan-kawan! 👋
-        Jom kita tonton video ini bersama-sama.
-        Perhatikan dengan teliti, ya!
       </p>
-      <p>Hehehe! Jangan terlepas perkara penting dalam video ini!</p>
+
+      <button id="nextBtn" onclick="nextDialog()">
+        Seterusnya ➜
+      </button>
     </div>
 
   </div>
@@ -201,6 +224,41 @@ iframe {
   </div>
 
 </div>
+
+<script>
+const dialogs = [
+  "Hai, kawan-kawan! 👋",
+  "Jom kita tonton video ini bersama-sama. 🎬",
+  "Perhatikan dengan teliti, ya! 👀",
+  "Hehehe! Jangan terlepas perkara penting dalam video ini! 😄"
+];
+
+let currentDialog = 0;
+
+function nextDialog() {
+  currentDialog++;
+
+  const text = document.getElementById("dialogText");
+  const button = document.getElementById("nextBtn");
+
+  if (currentDialog < dialogs.length) {
+    text.style.animation = "none";
+    text.offsetHeight;
+    text.style.animation = "muncul 0.5s ease";
+    text.innerHTML = dialogs[currentDialog];
+  }
+
+  if (currentDialog === dialogs.length - 1) {
+    button.innerHTML = "Jom Tonton! 📺";
+
+    button.onclick = function() {
+      document.querySelector(".video-title").scrollIntoView({
+        behavior: "smooth"
+      });
+    };
+  }
+}
+</script>
 
 </body>
 </html>
