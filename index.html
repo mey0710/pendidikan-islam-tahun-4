@@ -260,107 +260,163 @@ button:disabled {
   </div>
 </section>
 
+
 <!-- PAGE 2: DIALOG SELAMAT DATANG -->
 <section id="page2" class="page">
   <div class="kampung">
 
-    <div class="cloud cloud1">☁️</div>
-    <div class="cloud cloud2">☁️</div>
-    <div class="bird">🐦</div>
-
-    <div class="flower flower1">🌼</div>
-    <div class="flower flower2">🌸</div>
-    <div class="flower flower3">🌻</div>
-    <div class="flower flower4">🌷</div>
-
-    <div class="content">
+    <div class="content dialog-screen">
 
       <h1>🌸 SELAMAT DATANG! 🌸</h1>
-      <h2>JOM BERKENALAN DENGAN KAWAN-KAWAN!</h2>
+      <h2>JOM BELAJAR BERSAMA UPIN & IPIN!</h2>
 
-      <p>Tekan butang seterusnya untuk melihat dialog.</p>
+      <img
+        src="https://lescopaque.com/v11/wp-content/uploads/2017/07/poster-upin-ipin-240x300.png"
+        alt="Upin, Ipin dan kawan-kawan"
+        class="watak-asal"
+      >
 
-      <div class="dialog-area">
-
-        <div class="dialog" id="dialog1">
-          <div class="avatar">👦🏻</div>
-          <div>
-            <div class="speaker">UPIN</div>
-            <div class="dialog-text">
-              Hai kawan-kawan! Selamat datang ke kelas Pendidikan Islam!
-            </div>
-          </div>
-        </div>
-
-        <div class="dialog" id="dialog2">
-          <div class="avatar">👦🏻</div>
-          <div>
-            <div class="speaker">IPIN</div>
-            <div class="dialog-text">
-              Betul, betul, betul! Seronoknya dapat belajar bersama!
-            </div>
-          </div>
-        </div>
-
-        <div class="dialog" id="dialog3">
-          <div class="avatar">👦</div>
-          <div>
-            <div class="speaker">MAIL</div>
-            <div class="dialog-text">
-              Hari ini kita nak belajar tajuk apa?
-            </div>
-          </div>
-        </div>
-
-        <div class="dialog" id="dialog4">
-          <div class="avatar">👦🏻</div>
-          <div>
-            <div class="speaker">UPIN</div>
-            <div class="dialog-text">
-              Hari ini kita akan belajar tentang Hadis Memuliakan Tetamu!
-            </div>
-          </div>
-        </div>
-
-        <div class="dialog" id="dialog5">
-          <div class="avatar">👦🏻</div>
-          <div>
-            <div class="speaker">IPIN</div>
-            <div class="dialog-text">
-              Jom kawan-kawan! Kita belajar adab memuliakan tetamu!
-            </div>
-          </div>
-        </div>
-
+      <div class="dialog-box">
+        <div id="namaWatak">UPIN</div>
+        <p id="teksDialog">
+          Hai kawan-kawan! Selamat datang ke kelas Pendidikan Islam!
+        </p>
       </div>
 
-      <div class="counter" id="counter">
-        Dialog 0 daripada 5
-      </div>
+      <div id="statusDialog">Dialog 1 daripada 5</div>
 
-      <button onclick="previousDialog()" id="backDialog" disabled>
-        ← SEBELUMNYA
-      </button>
-
-      <button onclick="nextDialog()" id="nextDialog">
-        SETERUSNYA →
-      </button>
-
-      <div id="finishMessage">
-        <h2>🎉 TAHNIAH, KAWAN-KAWAN!</h2>
-        <p>Jom kita mulakan pembelajaran!</p>
+      <div id="akhirDialog" style="display:none">
+        <h2>🎉 JOM MULAKAN PEMBELAJARAN!</h2>
         <button onclick="showPage('page3')">
-          JOM BELAJAR! 🌸
+          JOM BELAJAR!
         </button>
       </div>
 
-      <button onclick="showPage('page1')">
-        KEMBALI KE MUKA DEPAN
+      <button id="mulaDialog" onclick="mulaAutomatik()">
+        ▶️ MULAKAN DIALOG
       </button>
 
     </div>
   </div>
 </section>
+
+<style>
+.watak-asal {
+  width: 190px;
+  max-width: 65%;
+  height: auto;
+  border-radius: 18px;
+  margin: 10px auto;
+  display: block;
+  box-shadow: 0 5px 15px #0002;
+}
+
+.dialog-box {
+  background: white;
+  border: 3px solid #f3c76c;
+  border-radius: 25px;
+  padding: 18px;
+  max-width: 520px;
+  margin: 15px auto;
+  min-height: 120px;
+  animation: dialogMasuk .7s ease;
+}
+
+#namaWatak {
+  color: #b45b24;
+  font-size: 21px;
+  font-weight: bold;
+}
+
+#teksDialog {
+  font-size: 18px;
+  line-height: 1.6;
+}
+
+#statusDialog {
+  color: #a95724;
+  font-weight: bold;
+  margin: 12px;
+}
+
+@keyframes dialogMasuk {
+  from {
+    opacity: 0;
+    transform: translateY(20px) scale(.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+</style>
+
+<script>
+const perbualan = [
+  {
+    nama: "UPIN",
+    teks: "Hai kawan-kawan! Selamat datang ke kelas Pendidikan Islam!"
+  },
+  {
+    nama: "IPIN",
+    teks: "Betul, betul, betul! Seronoknya dapat belajar bersama!"
+  },
+  {
+    nama: "MAIL",
+    teks: "Wah, hari ini kita nak belajar tajuk apa?"
+  },
+  {
+    nama: "UPIN",
+    teks: "Hari ini kita akan belajar tentang Hadis Memuliakan Tetamu!"
+  },
+  {
+    nama: "IPIN",
+    teks: "Jom kawan-kawan! Kita belajar adab memuliakan tetamu!"
+  }
+];
+
+let nomborDialog = 0;
+let pemasaDialog;
+
+function mulaAutomatik() {
+  clearInterval(pemasaDialog);
+  nomborDialog = 0;
+
+  document.getElementById("mulaDialog").style.display = "none";
+  document.getElementById("akhirDialog").style.display = "none";
+
+  paparDialog();
+
+  pemasaDialog = setInterval(() => {
+    nomborDialog++;
+
+    if (nomborDialog < perbualan.length) {
+      paparDialog();
+    } else {
+      clearInterval(pemasaDialog);
+      document.getElementById("statusDialog").style.display = "none";
+      document.getElementById("akhirDialog").style.display = "block";
+    }
+  }, 4000);
+}
+
+function paparDialog() {
+  const nama = document.getElementById("namaWatak");
+  const teks = document.getElementById("teksDialog");
+  const status = document.getElementById("statusDialog");
+  const kotak = document.querySelector(".dialog-box");
+
+  kotak.style.animation = "none";
+  void kotak.offsetWidth;
+  kotak.style.animation = "dialogMasuk .7s ease";
+
+  nama.textContent = perbualan[nomborDialog].nama;
+  teks.textContent = perbualan[nomborDialog].teks;
+  status.textContent =
+    "Dialog " + (nomborDialog + 1) + " daripada 5";
+}
+</script>
+
 
 <!-- PAGE 3: PENGENALAN -->
 <section id="page3" class="page">
