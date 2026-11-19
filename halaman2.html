@@ -33,40 +33,35 @@ h1 {
 
 .subtitle {
   font-size: 17px;
-  margin-bottom: 25px;
+  margin-bottom: 20px;
 }
 
-.characters {
+.character-area {
+  min-height: 260px;
   display: flex;
   justify-content: center;
-  align-items: flex-end;
-  gap: 35px;
-  margin: 20px auto;
+  align-items: center;
+  margin: 15px auto;
 }
 
 .character {
-  width: 40%;
-  max-width: 210px;
-  opacity: 0.55;
-  transform: scale(0.92);
-  transition: 0.4s ease;
-}
-
-.character img {
-  width: 100%;
-  height: 230px;
-  object-fit: contain;
+  display: none;
+  animation: muncul 0.7s ease;
 }
 
 .character.active {
-  opacity: 1;
-  transform: scale(1.08);
+  display: block;
+}
+
+.character img {
+  width: 220px;
+  height: 240px;
+  object-fit: contain;
 }
 
 .name {
+  font-size: 21px;
   font-weight: bold;
-  font-size: 20px;
-  margin-top: 5px;
   color: #d98227;
 }
 
@@ -75,15 +70,16 @@ h1 {
   border: 3px solid #f3bd65;
   border-radius: 20px;
   padding: 22px;
-  margin: 20px auto;
+  margin: 15px auto 22px;
   max-width: 650px;
-  min-height: 115px;
+  min-height: 110px;
   display: flex;
-  align-items: center;
   justify-content: center;
+  align-items: center;
   font-size: 21px;
   line-height: 1.5;
   font-weight: bold;
+  animation: muncul 0.5s ease;
 }
 
 button {
@@ -95,18 +91,26 @@ button {
   font-size: 17px;
   font-weight: bold;
   cursor: pointer;
-  transition: 0.2s;
 }
 
 button:hover {
   background: #dc8624;
-  transform: scale(1.04);
 }
 
 #replayButton {
   display: none;
-  margin-top: 12px;
   background: #69ad72;
+}
+
+@keyframes muncul {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 @media (max-width: 500px) {
@@ -115,7 +119,12 @@ button:hover {
   }
 
   .character img {
-    height: 170px;
+    width: 180px;
+    height: 210px;
+  }
+
+  .character-area {
+    min-height: 230px;
   }
 
   .dialogue {
@@ -136,7 +145,7 @@ button:hover {
     Mari kita berkenalan dengan kawan-kawan kita!
   </p>
 
-  <div class="characters">
+  <div class="character-area">
 
     <div class="character" id="upin">
       <img src="upin.png" alt="Upin">
@@ -196,13 +205,21 @@ function showDialogue() {
 
   const item = dialogues[current];
 
-  document.getElementById("dialogue").textContent =
-    item.name + ": " + item.text;
-
+  // Sembunyikan semua watak dahulu
   document.getElementById("upin").classList.remove("active");
   document.getElementById("ipin").classList.remove("active");
 
-  document.getElementById(item.character).classList.add("active");
+  // Paparkan watak yang sedang bercakap sahaja
+  const character = document.getElementById(item.character);
+  character.classList.add("active");
+
+  // Paparkan dialog watak
+  const dialogue = document.getElementById("dialogue");
+  dialogue.style.animation = "none";
+  void dialogue.offsetWidth;
+  dialogue.style.animation = "muncul 0.5s ease";
+
+  dialogue.textContent = item.name + ": " + item.text;
 
   current++;
 
@@ -226,11 +243,11 @@ function startDialogue() {
 
 function finishDialogue() {
 
-  document.getElementById("dialogue").textContent =
-    "Terima kasih kerana sudi berkenalan! Jom kita kenali guru kita pula! 😊";
-
   document.getElementById("upin").classList.remove("active");
   document.getElementById("ipin").classList.remove("active");
+
+  document.getElementById("dialogue").textContent =
+    "Terima kasih kerana sudi berkenalan! Jom kita kenali guru kita pula! 😊";
 
   document.getElementById("replayButton").style.display = "inline-block";
 }
