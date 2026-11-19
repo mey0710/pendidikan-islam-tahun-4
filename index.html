@@ -33,10 +33,14 @@ h1 {
   text-shadow: 1px 2px 2px #f5dfb7;
 }
 
+/* TULISAN KUNING */
 .subtitle {
-  font-size: 17px;
+  font-family: 'Trebuchet MS', cursive;
+  font-size: 20px;
+  font-weight: bold;
   margin-bottom: 25px;
-  color: #795c3c;
+  color: #f2b632;
+  text-shadow: 1px 2px 2px #f5dfb7;
 }
 
 .dialog-row {
@@ -161,6 +165,10 @@ button:hover {
     font-size: 25px;
   }
 
+  .subtitle {
+    font-size: 18px;
+  }
+
   .dialog-row {
     gap: 8px;
     min-height: 160px;
@@ -196,7 +204,6 @@ button:hover {
 
 <body>
 
-<!-- MUZIK LATAR -->
 <audio id="laguLatar" loop preload="auto">
   <source src="./lagu-latar.mp3" type="audio/mpeg">
 </audio>
@@ -210,7 +217,7 @@ button:hover {
   <h1>JOM BERKENALAN! 👋</h1>
 
   <p class="subtitle">
-    Hai kawan-kawan! Mari kita berkenalan dahulu!
+    Mari Berkenalan Dengan Kawan-Kawan! 🌟
   </p>
 
   <div class="dialog-row">
@@ -261,13 +268,11 @@ function kawalLagu() {
   }
 }
 
-// CUBA MAINKAN LAGU SECARA AUTOMATIK
 window.addEventListener("load", function() {
   lagu.play()
     .then(kemasKiniButang)
     .catch(kemasKiniButang);
 });
-
 
 // DIALOG UPIN DAN IPIN
 const dialogues = [
