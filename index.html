@@ -4,7 +4,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Jom Berkenalan!</title>
+<title>Salam Mesra Ustazah</title>
 
 <style>
 * {
@@ -13,152 +13,155 @@
 
 body {
   margin: 0;
-  padding: 20px;
-  font-family: 'Trebuchet MS', Arial, sans-serif;
   background: transparent;
-  color: #563b25;
+  font-family: Arial, sans-serif;
+  overflow: visible;
 }
 
-.container {
-  max-width: 850px;
-  margin: auto;
-  text-align: center;
-}
-
-h1 {
-  color: #e9a43c;
-  font-size: 32px;
-  margin-bottom: 8px;
-  text-shadow: 1px 2px 2px #f5dfb7;
-}
-
-.subtitle {
-  font-size: 17px;
-  margin-bottom: 25px;
-  color: #795c3c;
-}
-
-.dialog-row {
+.kawasan {
+  position: relative;
+  min-height: 500px;
+  padding: 20px 0 40px;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 20px;
-  max-width: 700px;
-  width: 95%;
-  min-height: 210px;
-  margin: 20px auto;
+  overflow: visible;
 }
 
-.face {
-  width: 175px;
-  height: 190px;
-  object-fit: contain;
-  flex-shrink: 0;
-  filter: drop-shadow(0 5px 5px #00000018);
-  animation: watakMuncul .8s cubic-bezier(.2,.8,.3,1);
+/* PAPAN KAYU */
+.papan {
+  position: relative;
+  z-index: 1;
+  width: 75%;
+  max-width: 650px;
+  padding: 28px 25px;
+  box-sizing: border-box;
+  text-align: center;
+  color: #fff8df;
+  border: 9px solid #75421e;
+  border-radius: 12px;
+
+  background:
+    repeating-linear-gradient(
+      0deg,
+      rgba(80, 38, 12, 0.18) 0px,
+      rgba(80, 38, 12, 0.18) 3px,
+      transparent 3px,
+      transparent 17px
+    ),
+    linear-gradient(135deg, #bd8247, #8b572b, #c18a50);
+
+  box-shadow: 5px 8px 14px #0005;
+  opacity: 0;
+  animation: papanMasuk 1.5s ease-out forwards;
+  animation-delay: 0.5s;
 }
 
-.bubble {
-  background: #fff0c9;
-  border: 3px solid #e9b85f;
-  border-radius: 25px;
-  padding: 22px;
-  text-align: left;
-  flex: 1;
-  color: #563b25;
-  font-size: 20px;
+.papan h2 {
+  color: #ffdf55;
+  font-size: 25px;
+  margin: 5px 0 18px;
+  text-shadow: 2px 2px 3px #4b260e;
+}
+
+.papan p {
+  font-size: 17px;
   line-height: 1.6;
-  box-shadow: 0 5px 12px #00000012;
-  animation: dialogMuncul .6s ease;
+  margin: 9px 0;
+  font-weight: bold;
+  text-shadow: 1px 1px 2px #4b260e;
 }
 
-.bubble strong {
-  color: #d78329;
-  font-size: 19px;
-}
-
-.bubble p {
-  margin: 8px 0 0;
-}
-
-button {
-  border: none;
-  border-radius: 30px;
-  padding: 14px 28px;
+/* BUTANG AUDIO */
+.butang-audio {
+  display: inline-block;
+  background: #ffdf55;
+  color: #593313;
+  border: 3px solid #75421e;
+  border-radius: 25px;
+  padding: 12px 22px;
   font-size: 16px;
   font-weight: bold;
-  color: white;
-  background: #eda83e;
   cursor: pointer;
-  box-shadow: 0 4px 0 #c9852b;
-  transition: .2s;
+  margin-top: 15px;
+  transition: 0.3s;
 }
 
-button:hover {
-  transform: translateY(-3px);
-  background: #dc922e;
+.butang-audio:hover {
+  background: #fff0a8;
+  transform: scale(1.05);
 }
 
-#replay {
-  display: none;
-  background: #69ad72;
-  box-shadow: 0 4px 0 #47854f;
+/* BUTANG MUZIK LATAR */
+.butang-muzik {
+  position: fixed;
+  top: 15px;
+  right: 15px;
+  z-index: 10;
+  background: #ffdf55;
+  color: #593313;
+  border: 3px solid #75421e;
+  border-radius: 25px;
+  padding: 11px 17px;
+  font-size: 14px;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 2px 3px 7px #0004;
 }
 
-@keyframes watakMuncul {
+/* GAMBAR REMBO */
+.rembo {
+  position: absolute;
+  z-index: 2;
+  width: 125px;
+  height: auto;
+  left: -150px;
+  bottom: 35px;
+  animation: remboMasuk 2s ease-out forwards;
+}
+
+/* ANIMASI */
+@keyframes papanMasuk {
   from {
     opacity: 0;
-    transform: translateX(-35px) scale(.8) rotate(-5deg);
+    transform: translateX(120px);
   }
   to {
     opacity: 1;
-    transform: translateX(0) scale(1) rotate(0);
+    transform: translateX(0);
   }
 }
 
-@keyframes dialogMuncul {
+@keyframes remboMasuk {
   from {
-    opacity: 0;
-    transform: translateY(18px) scale(.95);
+    left: -150px;
   }
   to {
-    opacity: 1;
-    transform: translateY(0) scale(1);
+    left: 5%;
   }
 }
 
-@media(max-width:500px) {
-  body {
-    padding: 10px;
+/* PAPARAN TELEFON */
+@media (max-width: 600px) {
+  .papan {
+    width: 90%;
+    padding: 22px 15px;
   }
 
-  h1 {
-    font-size: 25px;
+  .papan h2 {
+    font-size: 20px;
   }
 
-  .dialog-row {
-    gap: 8px;
-    min-height: 160px;
+  .papan p {
+    font-size: 15px;
   }
 
-  .face {
-    width: 105px;
-    height: 145px;
+  .rembo {
+    width: 85px;
   }
 
-  .bubble {
-    font-size: 16px;
-    padding: 13px;
-    border-radius: 18px;
-  }
-
-  .bubble strong {
-    font-size: 16px;
-  }
-
-  button {
+  .butang-audio {
     font-size: 14px;
-    padding: 12px 20px;
   }
 }
 </style>
@@ -166,156 +169,87 @@ button:hover {
 
 <body>
 
-<div class="container">
+<!-- BUTANG MUZIK LATAR -->
+<button class="butang-muzik" id="butangMuzik" onclick="kawalMuzik()">
+  🔊 Mainkan Muzik
+</button>
 
-  <h1>JOM BERKENALAN! 👋</h1>
+<audio id="laguLatar" loop preload="auto">
+  <source src="./lagu-latar.mp3" type="audio/mpeg">
+</audio>
 
-  <p class="subtitle">
-    Hai kawan-kawan! Mari kita berkenalan dahulu!
-  </p>
+<div class="kawasan">
 
-  <div class="dialog-row">
+  <div class="papan">
 
-    <img id="face" class="face" src="upin.png" alt="Upin">
+    <h2>🌸 SALAM MESRA DARIPADA USTAZAH 🌸</h2>
 
-    <div class="bubble">
-      <strong id="name">UPIN</strong>
-      <p id="words">
-        Hai kawan-kawan! Selamat datang ke dunia Pendidikan Islam!
-      </p>
-    </div>
+    <p>Assalamualaikum warahmatullahi wabarakatuh! 👋</p>
+
+    <p>Hai anak-anak yang dikasihi!</p>
+
+    <p>Selamat datang ke laman pembelajaran Ustazah.</p>
+
+    <p>Semoga anak-anak sentiasa ceria dan bersemangat untuk belajar.</p>
+
+    <p>Jom kita belajar bersama-sama! 📚✨</p>
+
+    <button class="butang-audio" onclick="mainkanUcapan()">
+      🎤 Dengar Ucapan Ustazah
+    </button>
+
+    <audio id="audioUstazah" src="./ucapan-ustazah%20.mp3..m4a" preload="auto"></audio>
 
   </div>
 
-  <button id="start" onclick="startDialogue()">
-    ▶ MULA DENGAR DIALOG
-  </button>
-
-  <button id="replay" onclick="startDialogue()">
-    ↻ DENGAR SEMULA
-  </button>
+  <img src="./rembo.png" class="rembo" alt="Rembo">
 
 </div>
 
 <script>
 
-const dialogues = [
+// MUZIK LATAR HALAMAN UTAMA
+const lagu = document.getElementById("laguLatar");
+const butangMuzik = document.getElementById("butangMuzik");
 
-  {
-    name: "UPIN",
-    image: "upin.png",
-    words: "Hai, kawan-kawan! Selamat datang ke dunia Pendidikan Islam! Kami gembira dapat berkenalan dengan kamu semua!"
-  },
-
-  {
-    name: "IPIN",
-    image: "ipin.png",
-    words: "Betul, betul, betul! Seronoknya dapat belajar bersama kawan-kawan! Mesti banyak perkara menarik yang kita boleh terokai!"
-  },
-
-  {
-    name: "UPIN",
-    image: "upin.png",
-    words: "Di sini, kita akan belajar sambil bermain dan meneroka pelbagai perkara baharu. Seronok, kan?"
-  },
-
-  {
-    name: "IPIN",
-    image: "ipin.png",
-    words: "Hehehe! Jadi, kawan-kawan jangan malu-malu, ya! Mari kita belajar bersama-sama!"
-  }
-
-];
-
-let current = 0;
-let timer;
-
-function showDialogue() {
-
-  const item = dialogues[current];
-
-  const face = document.getElementById("face");
-  const name = document.getElementById("name");
-  const words = document.getElementById("words");
-
-  // Animasi watak
-  face.style.animation = "none";
-  void face.offsetWidth;
-  face.style.animation = "watakMuncul .8s ease";
-
-  // Animasi dialog
-  const bubble = document.querySelector(".bubble");
-  bubble.style.animation = "none";
-  void bubble.offsetWidth;
-  bubble.style.animation = "dialogMuncul .6s ease";
-
-  face.src = item.image;
-  face.alt = item.name;
-  name.textContent = item.name;
-  words.textContent = item.words;
-
-  current++;
-
-  if (current < dialogues.length) {
-    timer = setTimeout(showDialogue, 6000);
+function kemasKiniButang() {
+  if (lagu.paused) {
+    butangMuzik.textContent = "🔇 Mainkan Muzik";
   } else {
-    timer = setTimeout(finishDialogue, 6000);
+    butangMuzik.textContent = "🔊 Tutup Muzik";
   }
 }
 
-function startDialogue() {
-
-  clearTimeout(timer);
-  current = 0;
-
-  document.getElementById("start").style.display = "none";
-  document.getElementById("replay").style.display = "none";
-
-  showDialogue();
+function kawalMuzik() {
+  if (lagu.paused) {
+    lagu.play().then(kemasKiniButang).catch(function() {
+      alert("Lagu tidak dapat dimainkan. Sila semak fail MP3.");
+    });
+  } else {
+    lagu.pause();
+    kemasKiniButang();
+  }
 }
 
-function finishDialogue() {
+// Cuba mainkan muzik secara automatik
+window.addEventListener("load", function() {
+  lagu.play().then(kemasKiniButang).catch(function() {
+    kemasKiniButang();
+  });
+});
 
-  const face = document.getElementById("face");
+// UCAPAN SUARA USTAZAH
+function mainkanUcapan() {
+  const audio = document.getElementById("audioUstazah");
 
-  face.style.display = "none";
+  audio.currentTime = 0;
 
-  document.getElementById("name").textContent = "UPIN & IPIN";
-
-  document.getElementById("words").textContent =
-    "Terima kasih kerana sudi berkenalan dengan kami! Jom kita kenali guru kita pula!";
-
-  document.getElementById("replay").style.display = "inline-block";
+  audio.play().catch(function() {
+    alert("Audio tidak dapat dimainkan. Sila semak fail rakaman.");
+  });
 }
 
 </script>
 
 </body>
 </html>
-
-<audio id="laguLatar" autoplay loop>
-  <source src="./lagu-latar.mp3" type="audio/mpeg">
-</audio>
-
-<button onclick="kawalLagu()" id="butangLagu">
-  🔊 Tutup Muzik
-</button>
-
-<script>
-const lagu = document.getElementById("laguLatar");
-const butang = document.getElementById("butangLagu");
-
-function kawalLagu() {
-  if (lagu.paused) {
-    lagu.play();
-    butang.textContent = "🔊 Tutup Muzik";
-  } else {
-    lagu.pause();
-    butang.textContent = "🔇 Buka Muzik";
-  }
-}
-
-lagu.play().catch(() => {
-  butang.textContent = "▶️ Mainkan Muzik";
-});
-</script>
