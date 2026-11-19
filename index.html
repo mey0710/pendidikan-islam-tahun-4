@@ -1,249 +1,101 @@
 
-<!DOCTYPE html>
-<html lang="ms">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Pendidikan Islam Tahun 4</title>
-
 <style>
-* {
-  box-sizing: border-box;
-}
-
-body {
-  margin: 0;
-  font-family: "Trebuchet MS", Arial, sans-serif;
-}
-
-.cover-page {
-  min-height: 100vh;
-  width: 100%;
-  position: relative;
-  overflow: hidden;
-
+.dialog-row {
   display: flex;
-  justify-content: center;
   align-items: center;
-  text-align: center;
-
-  background:
-    linear-gradient(
-      rgba(255, 239, 195, 0.35),
-      rgba(255, 239, 195, 0.45)
-    ),
-    url("https://lh3.googleusercontent.com/d/12H7vBoKpv5cKcmAD6gFQYwSoihUVFveu");
-
-  background-size: cover;
-  background-position: center;
-  padding: 25px;
+  justify-content: center;
+  gap: 20px;
+  max-width: 700px;
+  width: 95%;
+  margin: 20px auto;
+  animation: muncul .6s ease;
 }
 
-/* Awan bergerak */
-.cloud {
-  position: absolute;
-  top: 9%;
-  left: -180px;
-  font-size: 75px;
-  opacity: 0.85;
-  animation: cloudMove 35s linear infinite;
-  pointer-events: none;
+.face {
+  width: 150px;
+  height: 170px;
+  object-fit: contain;
+  flex-shrink: 0;
 }
 
-.cloud-two {
-  top: 22%;
-  animation-duration: 48s;
-  animation-delay: -15s;
-  font-size: 55px;
-}
-
-@keyframes cloudMove {
-  from { transform: translateX(0); }
-  to { transform: translateX(125vw); }
-}
-
-/* Kotak tajuk */
-.cover-card {
-  position: relative;
-  z-index: 2;
-  width: min(100%, 680px);
-  padding: 38px 25px;
-  border-radius: 30px;
-
-  background: rgba(255, 252, 235, 0.91);
-  border: 4px solid #e6b66d;
-
-  box-shadow: 0 12px 35px rgba(76, 49, 20, 0.25);
-
-  animation: cardAppear 1.2s ease;
-}
-
-@keyframes cardAppear {
-  from {
-    opacity: 0;
-    transform: translateY(35px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.school-label {
-  display: inline-block;
-  background: #7d9d58;
-  color: white;
-  padding: 9px 20px;
-  border-radius: 30px;
-  font-size: 15px;
-  letter-spacing: 1px;
-  margin-bottom: 18px;
-}
-
-.main-title {
-  color: #87502b;
-  font-size: clamp(30px, 6vw, 49px);
-  font-weight: 900;
-  line-height: 1.2;
-  margin: 5px 0;
-  text-shadow: 2px 2px #f7dfad;
-}
-
-.year {
-  color: #c47b32;
-  font-size: 27px;
-  font-weight: bold;
-  margin: 8px 0 22px;
-}
-
-.lesson {
+.bubble {
   background: #fff0c9;
-  border-left: 6px solid #d99a43;
-  border-right: 6px solid #d99a43;
-  padding: 15px;
-  border-radius: 15px;
-  margin: 18px 0;
+  border: 3px solid #e9b85f;
+  border-radius: 25px;
+  padding: 20px;
+  text-align: left;
+  flex: 1;
+  color: #563b25;
+  font-size: 20px;
 }
 
-.lesson h2 {
-  color: #89502b;
-  font-size: clamp(20px, 4vw, 29px);
-  margin: 0;
+@keyframes muncul {
+  from { opacity: 0; transform: translateY(15px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
-.lesson p {
-  color: #775a3e;
-  font-size: 16px;
-  margin: 9px 0 0;
-}
-
-.welcome {
-  color: #755b42;
-  font-size: 18px;
-  line-height: 1.5;
-  margin: 20px 0;
-}
-
-/* Butang interaktif */
-.start-button {
-  display: inline-block;
-  border: none;
-  border-radius: 40px;
-  background: #e58e36;
-  color: white;
-  padding: 17px 38px;
-  font-size: 19px;
-  font-weight: bold;
-  cursor: pointer;
-  text-decoration: none;
-
-  box-shadow: 0 6px 0 #a85e27;
-  animation: pulse 1.8s infinite;
-  transition: 0.2s;
-}
-
-.start-button:hover {
-  background: #c9762c;
-  transform: translateY(-4px);
-}
-
-@keyframes pulse {
-  0%, 100% {
-    box-shadow: 0 6px 0 #a85e27, 0 0 0 0 #e58e3655;
-  }
-  50% {
-    box-shadow: 0 6px 0 #a85e27, 0 0 0 12px #e58e3600;
-  }
-}
-
-.footer {
-  color: #886a4c;
-  font-size: 13px;
-  margin-top: 25px;
-}
-
-@media(max-width: 500px) {
-  .cover-card {
-    padding: 30px 18px;
-  }
-
-  .welcome {
-    font-size: 16px;
-  }
-
-  .start-button {
-    font-size: 16px;
-    padding: 15px 28px;
-  }
+@media(max-width:500px) {
+  .dialog-row { gap: 8px; }
+  .face { width: 105px; height: 130px; }
+  .bubble { font-size: 16px; padding: 13px; }
 }
 </style>
-</head>
 
-<body>
+<div class="dialog-row">
+  <img id="face" class="face" src="upin.png" alt="Upin">
+  <div class="bubble">
+    <strong id="name">UPIN</strong>
+    <p id="words">Hai kawan-kawan! Selamat datang ke kelas Pendidikan Islam!</p>
+  </div>
+</div>
 
-<main class="cover-page">
+<button onclick="nextDialogue()">DIALOG SETERUSNYA →</button>
 
-  <div class="cloud">☁️</div>
-  <div class="cloud cloud-two">☁️</div>
+<script>
+const dialogues = [
+  {
+    name: "UPIN",
+    image: "upin.png",
+    words: "Hai kawan-kawan! Selamat datang ke kelas Pendidikan Islam!"
+  },
+  {
+    name: "IPIN",
+    image: "ipin.png",
+    words: "Betul, betul, betul! Seronoknya dapat belajar bersama!"
+  },
+  {
+    name: "MAIL",
+    image: "mail.png",
+    words: "Hari ini kita nak belajar tajuk apa?"
+  },
+  {
+    name: "UPIN",
+    image: "upin.png",
+    words: "Kita akan belajar tentang Hadis Memuliakan Tetamu!"
+  },
+  {
+    name: "IPIN",
+    image: "ipin.png",
+    words: "Jom kawan-kawan! Kita belajar adab memuliakan tetamu!"
+  }
+];
 
-  <section class="cover-card">
+let current = 0;
 
-    <div class="school-label">
-      JOM BELAJAR BERSAMA!
-    </div>
+function nextDialogue() {
+  if (current < dialogues.length - 1) {
+    current++;
+    showDialogue();
+  }
+}
 
-    <h1 class="main-title">
-      PENDIDIKAN ISLAM
-    </h1>
+function showDialogue() {
+  const item = dialogues[current];
 
-    <div class="year">
-      TAHUN 4
-    </div>
+  document.getElementById("face").src = item.image;
+  document.getElementById("face").alt = item.name;
+  document.getElementById("name").textContent = item.name;
+  document.getElementById("words").textContent = item.words;
+}
 
-    <div class="lesson">
-      <h2>HADIS MEMULIAKAN TETAMU</h2>
-      <p>
-        Menghayati dan mengamalkan adab memuliakan tetamu
-        dalam kehidupan seharian.
-      </p>
-    </div>
-
-    <p class="welcome">
-      Assalamualaikum, kawan-kawan!<br>
-      Sudah bersedia untuk belajar bersama Upin & Ipin?
-    </p>
-
-    <a href="halaman2.html" class="start-button">
-      MULA BELAJAR →
-    </a>
-
-    <div class="footer">
-      Pembelajaran Interaktif Pendidikan Islam Tahun 4
-    </div>
-
-  </section>
-
-</main>
-
-</body>
-</html>
+</script>
