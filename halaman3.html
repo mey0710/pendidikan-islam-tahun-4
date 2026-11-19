@@ -1,20 +1,45 @@
 
-<!-- DIALOG MAIL -->
+<!-- DIALOG MAIL SATU DEMI SATU -->
 <div class="mail-area">
 
-  <img src="mail.png" alt="Watak Mail">
+  <img src="mail.png" alt="Mail">
 
   <div class="dialogue">
     <div class="speaker">💬 MAIL:</div>
 
-    Hai kawan-kawan! 👋
+    <p id="mailDialogue">
+      Hai kawan-kawan! 👋
+    </p>
 
-    Hari ini Mail nak ajak kamu semua tonton satu video.
-    Cuba perhatikan video ini dengan teliti, ya!
+    <button onclick="nextDialogue()" id="nextBtn">
+      Seterusnya ➜
+    </button>
 
-    Selepas menonton, cuba teka apakah yang akan kita pelajari pada hari ini.
-
-    Jom tonton bersama-sama! 📺
   </div>
-
 </div>
+
+<script>
+const dialogues = [
+  "Hai kawan-kawan! 👋",
+  "Hari ini Mail nak ajak kamu semua tonton satu video.",
+  "Cuba perhatikan video ini dengan teliti, ya!",
+  "Selepas menonton, cuba teka apakah yang akan kita pelajari pada hari ini.",
+  "Jom tonton bersama-sama! 📺"
+];
+
+let currentDialogue = 0;
+
+function nextDialogue() {
+  currentDialogue++;
+
+  if (currentDialogue < dialogues.length) {
+    document.getElementById("mailDialogue").textContent =
+      dialogues[currentDialogue];
+  } else {
+    document.getElementById("mailDialogue").textContent =
+      "Bagus! Jom kita tonton video sekarang! 🎉";
+
+    document.getElementById("nextBtn").style.display = "none";
+  }
+}
+</script>
