@@ -292,3 +292,30 @@ function finishDialogue() {
 
 </body>
 </html>
+
+<audio id="laguLatar" autoplay loop>
+  <source src="./lagu-latar.mp3" type="audio/mpeg">
+</audio>
+
+<button onclick="kawalLagu()" id="butangLagu">
+  🔊 Tutup Muzik
+</button>
+
+<script>
+const lagu = document.getElementById("laguLatar");
+const butang = document.getElementById("butangLagu");
+
+function kawalLagu() {
+  if (lagu.paused) {
+    lagu.play();
+    butang.textContent = "🔊 Tutup Muzik";
+  } else {
+    lagu.pause();
+    butang.textContent = "🔇 Buka Muzik";
+  }
+}
+
+lagu.play().catch(() => {
+  butang.textContent = "▶️ Mainkan Muzik";
+});
+</script>
