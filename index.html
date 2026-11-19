@@ -14,138 +14,181 @@
 body {
   margin: 0;
   padding: 20px;
-  font-family: Arial, sans-serif;
+  font-family: 'Trebuchet MS', Arial, sans-serif;
   background: transparent;
-  color: #59452f;
+  color: #563b25;
 }
 
 .container {
   max-width: 850px;
   margin: auto;
   text-align: center;
+  padding-top: 35px;
 }
 
 h1 {
-  color: #e69b36;
+  color: #e9a43c;
   font-size: 32px;
   margin-bottom: 8px;
+  text-shadow: 1px 2px 2px #f5dfb7;
 }
 
 .subtitle {
   font-size: 17px;
-  margin-bottom: 20px;
+  margin-bottom: 25px;
+  color: #795c3c;
 }
 
-.character-area {
-  min-height: 260px;
+.dialog-row {
   display: flex;
-  justify-content: center;
   align-items: center;
-  margin: 15px auto;
+  justify-content: center;
+  gap: 20px;
+  max-width: 700px;
+  width: 95%;
+  min-height: 210px;
+  margin: 20px auto;
 }
 
-.character {
-  display: none;
-  animation: muncul 0.7s ease;
-}
-
-.character.active {
-  display: block;
-}
-
-.character img {
-  width: 220px;
-  height: 240px;
+.face {
+  width: 175px;
+  height: 190px;
   object-fit: contain;
+  flex-shrink: 0;
+  filter: drop-shadow(0 5px 5px #00000018);
+  animation: watakMuncul .8s cubic-bezier(.2,.8,.3,1);
 }
 
-.name {
-  font-size: 21px;
-  font-weight: bold;
-  color: #d98227;
-}
-
-.dialogue {
-  background: #fff7e9;
-  border: 3px solid #f3bd65;
-  border-radius: 20px;
+.bubble {
+  background: #fff0c9;
+  border: 3px solid #e9b85f;
+  border-radius: 25px;
   padding: 22px;
-  margin: 15px auto 22px;
-  max-width: 650px;
-  min-height: 110px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 21px;
-  line-height: 1.5;
-  font-weight: bold;
-  animation: muncul 0.5s ease;
+  text-align: left;
+  flex: 1;
+  color: #563b25;
+  font-size: 20px;
+  line-height: 1.6;
+  box-shadow: 0 5px 12px #00000012;
+  animation: dialogMuncul .6s ease;
+}
+
+.bubble strong {
+  color: #d78329;
+  font-size: 19px;
+}
+
+.bubble p {
+  margin: 8px 0 0;
 }
 
 button {
-  background: #f2a83b;
-  color: white;
   border: none;
-  padding: 14px 28px;
   border-radius: 30px;
-  font-size: 17px;
+  padding: 14px 28px;
+  font-size: 16px;
   font-weight: bold;
+  color: white;
+  background: #eda83e;
   cursor: pointer;
+  box-shadow: 0 4px 0 #c9852b;
+  transition: .2s;
 }
 
 button:hover {
-  background: #dc8624;
+  transform: translateY(-3px);
+  background: #dc922e;
 }
 
-#replayButton {
+#replay {
   display: none;
   background: #69ad72;
+  box-shadow: 0 4px 0 #47854f;
 }
 
 /* BUTANG MUZIK */
-#butangMuzik {
+#butangLagu {
   position: fixed;
   top: 15px;
   right: 15px;
-  z-index: 100;
+  z-index: 1000;
   background: #ffdf55;
   color: #593313;
-  border: 2px solid #75421e;
-  border-radius: 25px;
-  padding: 11px 17px;
+  border: 2px solid #d99b37;
+  border-radius: 30px;
+  padding: 11px 18px;
   font-size: 14px;
   font-weight: bold;
-  box-shadow: 2px 3px 7px #0004;
+  box-shadow: 0 3px 8px #00000020;
 }
 
-@keyframes muncul {
+#butangLagu:hover {
+  background: #ffe995;
+}
+
+@keyframes watakMuncul {
   from {
     opacity: 0;
-    transform: translateY(15px);
+    transform: translateX(-35px) scale(.8) rotate(-5deg);
   }
   to {
     opacity: 1;
-    transform: translateY(0);
+    transform: translateX(0) scale(1) rotate(0);
   }
 }
 
-@media (max-width: 500px) {
+@keyframes dialogMuncul {
+  from {
+    opacity: 0;
+    transform: translateY(18px) scale(.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@media(max-width:500px) {
+  body {
+    padding: 10px;
+  }
+
+  .container {
+    padding-top: 45px;
+  }
+
   h1 {
     font-size: 25px;
   }
 
-  .character img {
-    width: 180px;
-    height: 210px;
+  .dialog-row {
+    gap: 8px;
+    min-height: 160px;
   }
 
-  .character-area {
-    min-height: 230px;
+  .face {
+    width: 105px;
+    height: 145px;
   }
 
-  .dialogue {
-    font-size: 18px;
-    padding: 16px;
+  .bubble {
+    font-size: 16px;
+    padding: 13px;
+    border-radius: 18px;
+  }
+
+  .bubble strong {
+    font-size: 16px;
+  }
+
+  button {
+    font-size: 14px;
+    padding: 12px 20px;
+  }
+
+  #butangLagu {
+    font-size: 12px;
+    padding: 9px 13px;
   }
 }
 </style>
@@ -153,46 +196,41 @@ button:hover {
 
 <body>
 
-<!-- MUZIK LATAR HALAMAN PERTAMA -->
-<button id="butangMuzik" onclick="kawalMuzik()">
-  🔊 Mainkan Muzik
-</button>
-
+<!-- MUZIK LATAR -->
 <audio id="laguLatar" loop preload="auto">
   <source src="./lagu-latar.mp3" type="audio/mpeg">
 </audio>
+
+<button onclick="kawalLagu()" id="butangLagu">
+  🔇 Mainkan Muzik
+</button>
 
 <div class="container">
 
   <h1>JOM BERKENALAN! 👋</h1>
 
   <p class="subtitle">
-    Mari kita berkenalan dengan kawan-kawan kita!
+    Hai kawan-kawan! Mari kita berkenalan dahulu!
   </p>
 
-  <div class="character-area">
+  <div class="dialog-row">
 
-    <div class="character" id="upin">
-      <img src="upin.png" alt="Upin">
-      <div class="name">UPIN</div>
-    </div>
+    <img id="face" class="face" src="upin.png" alt="Upin">
 
-    <div class="character" id="ipin">
-      <img src="ipin.png" alt="Ipin">
-      <div class="name">IPIN</div>
+    <div class="bubble">
+      <strong id="name">UPIN</strong>
+      <p id="words">
+        Hai kawan-kawan! Selamat datang ke dunia Pendidikan Islam!
+      </p>
     </div>
 
   </div>
 
-  <div class="dialogue" id="dialogue">
-    Hai kawan-kawan! Tekan butang di bawah untuk bermula!
-  </div>
-
-  <button id="startButton" onclick="startDialogue()">
+  <button id="start" onclick="startDialogue()">
     ▶ MULA DENGAR DIALOG
   </button>
 
-  <button id="replayButton" onclick="startDialogue()">
+  <button id="replay" onclick="startDialogue()">
     ↻ DENGAR SEMULA
   </button>
 
@@ -202,53 +240,62 @@ button:hover {
 
 // KAWAL MUZIK LATAR
 const lagu = document.getElementById("laguLatar");
-const butangMuzik = document.getElementById("butangMuzik");
+const butang = document.getElementById("butangLagu");
 
 function kemasKiniButang() {
-  butangMuzik.textContent = lagu.paused
+  butang.textContent = lagu.paused
     ? "🔇 Mainkan Muzik"
     : "🔊 Tutup Muzik";
 }
 
-function kawalMuzik() {
+function kawalLagu() {
   if (lagu.paused) {
-    lagu.play().then(kemasKiniButang).catch(function() {
-      alert("Lagu tidak dapat dimainkan. Sila semak fail MP3.");
-    });
+    lagu.play()
+      .then(kemasKiniButang)
+      .catch(function() {
+        alert("Lagu tidak dapat dimainkan. Sila semak fail MP3.");
+      });
   } else {
     lagu.pause();
     kemasKiniButang();
   }
 }
 
-// CUBA AUTOPLAY
+// CUBA MAINKAN LAGU SECARA AUTOMATIK
 window.addEventListener("load", function() {
-  lagu.play().then(kemasKiniButang).catch(kemasKiniButang);
+  lagu.play()
+    .then(kemasKiniButang)
+    .catch(kemasKiniButang);
 });
 
 
-// DIALOG U PIN DAN IPIN
+// DIALOG UPIN DAN IPIN
 const dialogues = [
+
   {
-    character: "upin",
     name: "UPIN",
-    text: "Hai, kawan-kawan! Selamat datang ke dunia Pendidikan Islam!"
+    image: "upin.png",
+    words: "Hai, kawan-kawan! Selamat datang ke dunia Pendidikan Islam! Kami gembira dapat berkenalan dengan kamu semua!"
   },
+
   {
-    character: "ipin",
     name: "IPIN",
-    text: "Betul, betul, betul! Seronoknya dapat belajar bersama kawan-kawan!"
+    image: "ipin.png",
+    words: "Betul, betul, betul! Seronoknya dapat belajar bersama kawan-kawan! Mesti banyak perkara menarik yang kita boleh terokai!"
   },
+
   {
-    character: "upin",
     name: "UPIN",
-    text: "Jom kita teroka sesuatu yang menarik hari ini!"
+    image: "upin.png",
+    words: "Di sini, kita akan belajar sambil bermain dan meneroka pelbagai perkara baharu. Seronok, kan?"
   },
+
   {
-    character: "ipin",
     name: "IPIN",
-    text: "Jangan lupa bersedia, ya! Kita akan belajar bersama-sama!"
+    image: "ipin.png",
+    words: "Hehehe! Jadi, kawan-kawan jangan malu-malu, ya! Mari kita belajar bersama-sama!"
   }
+
 ];
 
 let current = 0;
@@ -258,25 +305,32 @@ function showDialogue() {
 
   const item = dialogues[current];
 
-  document.getElementById("upin").classList.remove("active");
-  document.getElementById("ipin").classList.remove("active");
+  const face = document.getElementById("face");
+  const name = document.getElementById("name");
+  const words = document.getElementById("words");
 
-  const character = document.getElementById(item.character);
-  character.classList.add("active");
+  face.style.animation = "none";
+  void face.offsetWidth;
+  face.style.animation = "watakMuncul .8s ease";
 
-  const dialogue = document.getElementById("dialogue");
-  dialogue.style.animation = "none";
-  void dialogue.offsetWidth;
-  dialogue.style.animation = "muncul 0.5s ease";
+  const bubble = document.querySelector(".bubble");
+  bubble.style.animation = "none";
+  void bubble.offsetWidth;
+  bubble.style.animation = "dialogMuncul .6s ease";
 
-  dialogue.textContent = item.name + ": " + item.text;
+  face.style.display = "block";
+  face.src = item.image;
+  face.alt = item.name;
+
+  name.textContent = item.name;
+  words.textContent = item.words;
 
   current++;
 
   if (current < dialogues.length) {
-    timer = setTimeout(showDialogue, 4500);
+    timer = setTimeout(showDialogue, 6000);
   } else {
-    timer = setTimeout(finishDialogue, 4500);
+    timer = setTimeout(finishDialogue, 6000);
   }
 }
 
@@ -285,21 +339,24 @@ function startDialogue() {
   clearTimeout(timer);
   current = 0;
 
-  document.getElementById("startButton").style.display = "none";
-  document.getElementById("replayButton").style.display = "none";
+  document.getElementById("start").style.display = "none";
+  document.getElementById("replay").style.display = "none";
 
   showDialogue();
 }
 
 function finishDialogue() {
 
-  document.getElementById("upin").classList.remove("active");
-  document.getElementById("ipin").classList.remove("active");
+  const face = document.getElementById("face");
 
-  document.getElementById("dialogue").textContent =
-    "Terima kasih kerana sudi berkenalan! Jom kita kenali guru kita pula! 😊";
+  face.style.display = "none";
 
-  document.getElementById("replayButton").style.display = "inline-block";
+  document.getElementById("name").textContent = "UPIN & IPIN";
+
+  document.getElementById("words").textContent =
+    "Terima kasih kerana sudi berkenalan dengan kami! Jom kita kenali guru kita pula!";
+
+  document.getElementById("replay").style.display = "inline-block";
 }
 
 </script>
