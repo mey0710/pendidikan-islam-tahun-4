@@ -175,6 +175,9 @@ button:hover {
 
 <script>
 
+// HENTIKAN LAGU LATAR APABILA HALAMAN INI DIBUKA
+// Lagu halaman utama tidak dibawa ke halaman kedua.
+
 const dialogues = [
   {
     character: "upin",
@@ -205,15 +208,12 @@ function showDialogue() {
 
   const item = dialogues[current];
 
-  // Sembunyikan semua watak dahulu
   document.getElementById("upin").classList.remove("active");
   document.getElementById("ipin").classList.remove("active");
 
-  // Paparkan watak yang sedang bercakap sahaja
   const character = document.getElementById(item.character);
   character.classList.add("active");
 
-  // Paparkan dialog watak
   const dialogue = document.getElementById("dialogue");
   dialogue.style.animation = "none";
   void dialogue.offsetWidth;
