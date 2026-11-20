@@ -1,0 +1,28 @@
+
+<div class="doa-banner">
+  🤲🏻 MARI KITA MULAKAN DENGAN BACAAN DOA TERLEBIH DAHULU 🤲🏻
+</div>
+
+<style>
+.doa-banner {
+  width: 100%;
+  overflow: hidden;
+  white-space: nowrap;
+  background: #fff0c9;
+  color: #8a5a16;
+  padding: 16px 0;
+  border-radius: 15px;
+  font-size: 22px;
+  font-weight: bold;
+  animation: masuk 12s linear infinite;
+}
+
+@keyframes masuk {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(-100%);
+  }
+}
+</style>
