@@ -1,14 +1,115 @@
-<div class="door-area">
-  <div class="door-frame">
-    <div class="door" id="door">
-      <div class="door-knob"></div>
-      <div class="door-panel"></div>
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jom Kenali Maksud Tetamu</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;padding:15px;font-family:Arial,sans-serif;background:#d9f3ff}
+#tetamu-app{max-width:850px;margin:auto;padding:18px;border:4px solid #FFD900;border-radius:22px;background:linear-gradient(135deg,#d9f3ff,#fff4b8);text-align:center}
+.scene{display:flex;align-items:center;justify-content:space-around;gap:15px;min-height:310px}
+.door-area{width:42%}
+.door-frame{width:150px;height:230px;margin:auto;background:#6b3515;border:8px solid #6b3515;border-bottom:0;border-radius:8px 8px 0 0;perspective:700px}
+.door{width:100%;height:100%;background:linear-gradient(90deg,#b86b32,#8b4513);border:3px solid #63300f;transform-origin:left;transition:transform 1s ease;position:relative}
+.door.open{transform:rotateY(-105deg)}
+.door-panel{position:absolute;inset:15px;border:3px solid #d99a5e}
+.door-knob{position:absolute;right:12px;top:110px;width:12px;height:12px;background:#FFD900;border-radius:50%}
+.door-label{font-weight:bold;color:#8b4513;margin-top:8px}
+.character-area{width:52%;min-height:270px;display:flex;flex-direction:column;align-items:center;justify-content:center}
+#character{width:220px;height:250px;max-width:100%;object-fit:contain;display:none;animation:appear .4s ease}
+#character-name{font-size:20px;font-weight:bold;color:#0066a8;margin-top:5px}
+.dialogue-box{background:white;border:3px solid #0088D8;border-radius:20px;padding:20px;margin-top:12px}
+#dialogue{color:#333;font-size:19px;line-height:1.6;font-weight:600;min-height:65px;display:flex;justify-content:center;align-items:center}
+#next{background:#0088D8;color:white;border:3px solid #FFD900;border-radius:30px;padding:12px 25px;margin-top:15px;font-size:16px;font-weight:bold;cursor:pointer}
+#next:hover{background:#0066a8}
+#next:active{transform:scale(.96)}
+@keyframes appear{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+@media(max-width:500px){body{padding:5px}#tetamu-app{padding:10px}.scene{min-height:230px;gap:5px}.door-frame{width:105px;height:180px}#character{width:145px;height:190px}#dialogue{font-size:16px}}
+</style>
+</head>
+<body>
+<div id="tetamu-app">
+  <div class="scene">
+    <div class="door-area">
+      <div class="door-frame">
+        <div class="door" id="door"><div class="door-knob"></div><div class="door-panel"></div></div>
+      </div>
+      <div class="door-label">KETUK PINTU</div>
+    </div>
+    <div class="character-area">
+      <img id="character" src="" alt="Watak">
+      <div id="character-name"></div>
     </div>
   </div>
-  <div class="door-label">KETUK PINTU</div>
+  <div class="dialogue-box">
+    <div id="dialogue">Eh, macam ada orang datang! Siapakah agaknya?</div>
+    <button id="next">Ketuk pintu</button>
+  </div>
 </div>
-
-<div class="character-area">
-  <img id="character" src="" alt="Watak">
-  <div id="character-name"></div>
-</div>
+<script>
+(function(){
+  const door=document.getElementById("door");
+  const character=document.getElementById("character");
+  const name=document.getElementById("character-name");
+  const dialogue=document.getElementById("dialogue");
+  const button=document.getElementById("next");
+  const fizi="https://raw.githubusercontent.com/mey0710/pendidikan-islam-tahun-4/d411101da5064faa281e3798c03a12471c35b758/fizi.png";
+  const ehsan="https://raw.githubusercontent.com/mey0710/pendidikan-islam-tahun-4/d411101da5064faa281e3798c03a12471c35b758/ehsan.png";
+  const steps=[
+    {text:"Eh, macam ada orang datang! Siapakah agaknya?",speaker:"",image:"",button:"Ketuk pintu"},
+    {text:"Tok! Tok! Tok! Wah, ada seseorang datang berkunjung!",speaker:"",image:"",button:"Buka pintu",open:true},
+    {text:"Eh, Ehsan! Kau tahu tak apa maksud tetamu?",speaker:"Fizi",image:fizi,button:"Seterusnya"},
+    {text:"Hmm... aku tak pasti, Fizi.",speaker:"Ehsan",image:ehsan,button:"Seterusnya"},
+    {text:"Kalau macam tu, kawan-kawan tahu tak apa maksud tetamu?",speaker:"Fizi",image:fizi,button:"Seterusnya"},
+    {text:"Wah, kalau belum tahu, jom kita dengar lagu bersama-sama untuk mengetahuinya!",speaker:"Fizi",image:fizi,button:"Ulang Semula"}
+  ];
+  let current=0;
+  let audioContext;
+  function knockSound(){
+    try{
+      audioContext=audioContext||(new(window.AudioContext||window.webkitAudioContext)());
+      if(audioContext.state==="suspended")audioContext.resume();
+      [0,0.25,0.5].forEach(delay=>{
+        const oscillator=audioContext.createOscillator();
+        const gain=audioContext.createGain();
+        oscillator.connect(gain);gain.connect(audioContext.destination);
+        oscillator.frequency.value=110;
+        gain.gain.setValueAtTime(0.35,audioContext.currentTime+delay);
+        gain.gain.exponentialRampToValueAtTime(0.001,audioContext.currentTime+delay+0.12);
+        oscillator.start(audioContext.currentTime+delay);
+        oscillator.stop(audioContext.currentTime+delay+0.13);
+      });
+    }catch(e){console.log("Audio tidak disokong")}
+  }
+  function showStep(){
+    const step=steps[current];
+    dialogue.textContent=step.text;
+    button.textContent=step.button;
+    if(step.open)door.classList.add("open");
+    if(step.image){
+      character.style.display="block";
+      character.src=step.image;
+      name.textContent=step.speaker;
+    }else{
+      character.style.display="none";
+      name.textContent="";
+      character.removeAttribute("src");
+    }
+  }
+  button.addEventListener("click",function(){
+    if(current===steps.length-1){
+      current=0;
+      door.classList.remove("open");
+      showStep();
+      return;
+    }
+    if(current===0)knockSound();
+    current++;
+    showStep();
+  });
+  showStep();
+})();
+</script>
+</body>
+</html>
