@@ -1,5 +1,109 @@
-<button onclick="pilih(2)" style="background:#1675C1;color:#FFD700;padding:20px;border:3px solid #FFD700;border-radius:15px;font-size:20px;font-weight:bold;">KUMPULAN 2</button>
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pemilihan Kumpulan</title>
 
-<button onclick="pilih(3)" style="background:#1675C1;color:#FFD700;padding:20px;border:3px solid #FFD700;border-radius:15px;font-size:20px;font-weight:bold;">KUMPULAN 3</button>
+<style>
+body {
+  font-family: Arial, sans-serif;
+  background: #EAF5FF;
+  margin: 0;
+  padding: 20px;
+}
 
-<button onclick="pilih(4)" style="background:#1675C1;color:#FFD700;padding:20px;border:3px solid #FFD700;border-radius:15px;font-size:20px;font-weight:bold;">KUMPULAN 4</button>
+.container {
+  max-width: 550px;
+  margin: 20px auto;
+  padding: 25px;
+  background: white;
+  border: 4px solid #1675C1;
+  border-radius: 22px;
+  text-align: center;
+  box-shadow: 0 5px 12px #0002;
+}
+
+h1 {
+  color: #1675C1;
+  font-size: 27px;
+}
+
+.arahan {
+  background: #FFF2B3;
+  color: #174A8B;
+  padding: 15px;
+  border-radius: 14px;
+  font-weight: bold;
+  line-height: 1.5;
+}
+
+.kumpulan {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 13px;
+  margin-top: 22px;
+}
+
+button {
+  background: #1675C1;
+  color: #FFD700;
+  padding: 22px 8px;
+  border: 3px solid #FFD700;
+  border-radius: 15px;
+  font-size: 18px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+button:active {
+  transform: scale(0.95);
+}
+
+#hasil {
+  display: none;
+  margin-top: 22px;
+  padding: 18px;
+  background: #FFD700;
+  color: #174A8B;
+  border-radius: 15px;
+  font-size: 22px;
+  font-weight: bold;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>🌟 PEMILIHAN KUMPULAN 🌟</h1>
+
+<div class="arahan">
+Arahan: Sila pilih satu nombor kumpulan di bawah untuk menentukan kumpulan anda. Setiap murid hanya dibenarkan memilih satu nombor sahaja.
+</div>
+
+<div class="kumpulan">
+
+<button onclick="pilih(1)">KUMPULAN 1</button>
+<button onclick="pilih(2)">KUMPULAN 2</button>
+<button onclick="pilih(3)">KUMPULAN 3</button>
+<button onclick="pilih(4)">KUMPULAN 4</button>
+
+</div>
+
+<div id="hasil"></div>
+
+</div>
+
+<script>
+function pilih(n) {
+  const hasil = document.getElementById("hasil");
+  hasil.style.display = "block";
+  hasil.innerHTML = "🎉 ANDA TELAH MEMILIH KUMPULAN " + n + "! 🎉";
+}
+</script>
+
+</body>
+</html>
