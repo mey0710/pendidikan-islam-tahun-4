@@ -1,0 +1,54 @@
+const dialogues = [
+{
+character: "fizi",
+name: "FIZI",
+text: "Eh, Ehsan! Kau tahu tak apa yang kita perlu buat apabila tetamu datang ke rumah?"
+},
+{
+character: "ehsan",
+name: "EHSAN",
+text: "Tak tahulah, Fizi! Apa yang kita perlu buat?"
+},
+{
+character: "fizi",
+name: "FIZI",
+text: "Kita mestilah melayan tetamu dengan baik! Tapi, siapa yang ajar kita tentang perkara ni?"
+},
+{
+character: "ehsan",
+name: "EHSAN",
+text: "Mestilah Rasulullah SAW! Baginda mengajar kita supaya memuliakan tetamu."
+}
+];
+
+let currentDialogue = 0;
+
+function showDialogue() {
+const dialogue = dialogues[currentDialogue];
+
+document.getElementById("speaker").textContent = dialogue.name;
+document.getElementById("dialogueText").textContent = dialogue.text;
+
+document.getElementById("fizi").style.display =
+    dialogue.character === "fizi" ? "block" : "none";
+
+document.getElementById("ehsan").style.display =
+    dialogue.character === "ehsan" ? "block" : "none";
+}
+
+function nextDialogue() {
+if (currentDialogue < dialogues.length - 1) {
+currentDialogue++;
+showDialogue();
+}
+}
+
+function previousDialogue() {
+if (currentDialogue > 0) {
+currentDialogue--;
+showDialogue();
+}
+}
+
+// Paparkan dialog pertama apabila halaman dibuka
+showDialogue();
