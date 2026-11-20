@@ -1,54 +1,36 @@
-const dialogues = [
-{
-character: "fizi",
-name: "FIZI",
-text: "Eh, Ehsan! Kau tahu tak apa yang kita perlu buat apabila tetamu datang ke rumah?"
-},
-{
-character: "ehsan",
-name: "EHSAN",
-text: "Tak tahulah, Fizi! Apa yang kita perlu buat?"
-},
-{
-character: "fizi",
-name: "FIZI",
-text: "Kita mestilah melayan tetamu dengan baik! Tapi, siapa yang ajar kita tentang perkara ni?"
-},
-{
-character: "ehsan",
-name: "EHSAN",
-text: "Mestilah Rasulullah SAW! Baginda mengajar kita supaya memuliakan tetamu."
-}
-];
+<h1>Jom Belajar Memuliakan Tetamu!</h1>
+<p class="subtitle">Mari ikuti perbualan Fizi dan Ehsan.</p>
 
-let currentDialogue = 0;
+<div class="characters">
 
-function showDialogue() {
-const dialogue = dialogues[currentDialogue];
+    <div id="fizi" class="character">
+        <img src="fizi.png" alt="Fizi">
+        <p>Fizi</p>
+    </div>
 
-document.getElementById("speaker").textContent = dialogue.name;
-document.getElementById("dialogueText").textContent = dialogue.text;
+    <div id="ehsan" class="character">
+        <img src="ehsan.png" alt="Ehsan">
+        <p>Ehsan</p>
+    </div>
 
-document.getElementById("fizi").style.display =
-    dialogue.character === "fizi" ? "block" : "none";
+</div>
 
-document.getElementById("ehsan").style.display =
-    dialogue.character === "ehsan" ? "block" : "none";
-}
+<div class="dialogue-box" id="dialogueBox">
 
-function nextDialogue() {
-if (currentDialogue < dialogues.length - 1) {
-currentDialogue++;
-showDialogue();
-}
-}
+    <h3 id="speaker">FIZI</h3>
 
-function previousDialogue() {
-if (currentDialogue > 0) {
-currentDialogue--;
-showDialogue();
-}
-}
+    <p id="dialogueText"></p>
 
-// Paparkan dialog pertama apabila halaman dibuka
-showDialogue();
+    <div class="buttons">
+        <button id="previousButton" onclick="previousDialogue()">
+            Sebelumnya
+        </button>
+
+        <button id="nextButton" onclick="nextDialogue()">
+            Seterusnya
+        </button>
+    </div>
+
+    <div id="progress"></div>
+
+</div>
