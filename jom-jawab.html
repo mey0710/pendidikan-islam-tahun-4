@@ -1,3 +1,5 @@
+const URL_APPS_SCRIPT = "https://script.google.com/macros/s/AKfycbyYu3S41Wnfwwe-ijvD2rc0AgGlGahX7QWPbio8nyPGMr3AYMQfb3HWqNypdAd6IDbb/exec";
+
 function hantarSemua() {
   const nama = document.getElementById("namaMurid").value.trim();
   const jawapan1 = document.getElementById("jawapan1").value.trim();
@@ -33,10 +35,8 @@ function hantarSemua() {
   .then(() => {
     status.textContent = "Jawapan telah dihantar. Terima kasih!";
     status.style.color = "green";
-
     document.getElementById("papar1").textContent = jawapan1;
     document.getElementById("papar2").textContent = jawapan2;
-
     butang.disabled = false;
   })
   .catch((error) => {
@@ -45,7 +45,3 @@ function hantarSemua() {
     butang.disabled = false;
   });
 }
-</script>
-
-</body>
-</html>
