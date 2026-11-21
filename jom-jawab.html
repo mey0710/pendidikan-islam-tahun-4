@@ -1,257 +1,250 @@
 <!DOCTYPE html>
 <html lang="ms">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Jom Jawab!</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jom Jawab!</title>
 
-  <style>
-    * {
-      box-sizing: border-box;
-    }
+<style>
+* {
+    box-sizing: border-box;
+}
 
-    body {
-      margin: 0;
-      padding: 20px;
-      font-family: Arial, sans-serif;
-      background: #f0f2f5;
-      color: #222;
-    }
+body {
+    font-family: Arial, sans-serif;
+    background: #f2f2f2;
+    margin: 0;
+    padding: 20px;
+}
 
-    .container {
-      max-width: 650px;
-      margin: 20px auto;
-      background: white;
-      padding: 25px;
-      border-radius: 14px;
-      box-shadow: 0 3px 12px rgba(0,0,0,0.08);
-    }
+.container {
+    max-width: 650px;
+    margin: auto;
+}
 
-    h2 {
-      margin-top: 0;
-      color: #1877f2;
-      text-align: center;
-    }
+.card {
+    background: white;
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 18px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
 
-    .subtitle {
-      text-align: center;
-      color: #666;
-      margin-bottom: 25px;
-    }
+h2 {
+    margin-top: 0;
+    color: #222;
+}
 
-    label {
-      display: block;
-      font-weight: bold;
-      margin: 18px 0 8px;
-    }
+.subtitle {
+    color: #777;
+    font-size: 14px;
+}
 
-    input, textarea {
-      width: 100%;
-      padding: 12px;
-      border: 1px solid #ccc;
-      border-radius: 9px;
-      font-size: 15px;
-      font-family: inherit;
-    }
+input, textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 15px;
+    margin-top: 8px;
+    font-family: Arial, sans-serif;
+}
 
-    textarea {
-      min-height: 90px;
-      resize: vertical;
-    }
+textarea {
+    resize: vertical;
+    min-height: 90px;
+}
 
-    button {
-      width: 100%;
-      margin-top: 22px;
-      padding: 13px;
-      border: none;
-      border-radius: 9px;
-      background: #1877f2;
-      color: white;
-      font-size: 16px;
-      font-weight: bold;
-      cursor: pointer;
-    }
+button {
+    background: #e62117;
+    color: white;
+    border: none;
+    padding: 13px 22px;
+    border-radius: 25px;
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
+    width: 100%;
+}
 
-    button:hover {
-      background: #0d65d9;
-    }
+button:disabled {
+    background: #999;
+    cursor: not-allowed;
+}
 
-    button:disabled {
-      background: #999;
-      cursor: not-allowed;
-    }
+.status {
+    text-align: center;
+    margin-top: 15px;
+    font-size: 14px;
+    font-weight: bold;
+}
 
-    #statusHantar {
-      margin-top: 15px;
-      text-align: center;
-      font-size: 14px;
-      font-weight: bold;
-    }
+.comment {
+    display: flex;
+    gap: 12px;
+    margin-top: 18px;
+}
 
-    .komen {
-      margin-top: 30px;
-      border-top: 1px solid #ddd;
-      padding-top: 20px;
-    }
+.avatar {
+    background: #e5e5e5;
+    border-radius: 50%;
+    width: 38px;
+    height: 38px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
 
-    .komen-item {
-      background: #f0f2f5;
-      padding: 13px;
-      border-radius: 12px;
-      margin-top: 12px;
-    }
+.comment-content {
+    background: #f5f5f5;
+    border-radius: 12px;
+    padding: 12px;
+    flex: 1;
+    overflow-wrap: anywhere;
+}
 
-    .nama-papar {
-      font-weight: bold;
-      margin-bottom: 8px;
-    }
+.comment-content strong {
+    font-size: 14px;
+}
 
-    .reaksi {
-      color: #65676b;
-      font-size: 13px;
-      margin-top: 8px;
-    }
-  </style>
+.comment-content p {
+    margin-bottom: 0;
+}
+</style>
 </head>
 
 <body>
 
-  <div class="container">
-    <h2>💬 JOM JAWAB!</h2>
-    <p class="subtitle">Jawab dua soalan berikut berdasarkan pembelajaran hari ini.</p>
+<div class="container">
 
-    <form id="borangJawapan">
+    <div class="card">
+        <h2>💬 JOM JAWAB!</h2>
+        <p class="subtitle">Kongsikan jawapan kamu berdasarkan pembelajaran hari ini.</p>
 
-      <label for="namaMurid">Nama murid</label>
-      <input
-        type="text"
-        id="namaMurid"
-        placeholder="Masukkan nama anda"
-        required
-      >
-
-      <label for="jawapan1">
-        1. Apakah yang kamu tonton daripada video tadi?
-      </label>
-      <textarea
-        id="jawapan1"
-        placeholder="Tulis jawapan kamu di sini..."
-        required
-      ></textarea>
-
-      <label for="jawapan2">
-        2. Apakah pengajaran yang boleh kita amalkan dalam kehidupan seharian?
-      </label>
-      <textarea
-        id="jawapan2"
-        placeholder="Tulis jawapan kamu di sini..."
-        required
-      ></textarea>
-
-      <button type="submit" id="butangHantar">
-        Hantar Jawapan
-      </button>
-
-      <p id="statusHantar"></p>
-    </form>
-
-    <div class="komen">
-      <h3>💬 Jawapan Murid</h3>
-      <div id="senaraiKomen">
-        <p>Jawapan yang dihantar akan dipaparkan di sini.</p>
-      </div>
+        <label><strong>Nama murid</strong></label>
+        <input type="text" id="namaMurid" placeholder="Masukkan nama kamu">
     </div>
-  </div>
 
-  <script>
-    const URL_APPS_SCRIPT = "https://script.google.com/macros/s/AKfycbyYu3S41Wnfwwe-ijvD2rc0AgGlGahX7QWPbio8nyPGMr3AYMQfb3HWqNypdAd6IDbb/exec";
+    <div class="card">
+        <h3>1. Apakah yang kamu tonton daripada video tadi?</h3>
+        <textarea id="jawapan1" placeholder="Tulis jawapan kamu di sini..."></textarea>
+    </div>
 
-    const borang = document.getElementById("borangJawapan");
+    <div class="card">
+        <h3>2. Apakah pengajaran yang boleh kita amalkan dalam kehidupan seharian?</h3>
+        <textarea id="jawapan2" placeholder="Tulis jawapan kamu di sini..."></textarea>
+    </div>
+
+    <div class="card">
+        <button id="butangHantar" onclick="hantarJawapan()">
+            HANTAR JAWAPAN
+        </button>
+
+        <div class="status" id="statusHantar"></div>
+    </div>
+
+    <div class="card">
+        <h3>💬 Ruang Jawapan Murid</h3>
+        <div id="paparanJawapan">
+            <p class="subtitle">Jawapan yang dihantar akan dipaparkan di sini.</p>
+        </div>
+    </div>
+
+</div>
+
+<script>
+const URL_APPS_SCRIPT = "https://script.google.com/macros/s/AKfycbyYu3S41Wnfwwe-ijvD2rc0AgGlGahX7QWPbio8nyPGMr3AYMQfb3HWqNypdAd6IDbb/exec";
+
+function hantarJawapan() {
+
+    const nama = document.getElementById("namaMurid").value.trim();
+    const jawapan1 = document.getElementById("jawapan1").value.trim();
+    const jawapan2 = document.getElementById("jawapan2").value.trim();
+
     const status = document.getElementById("statusHantar");
     const butang = document.getElementById("butangHantar");
 
-    borang.addEventListener("submit", function(event) {
-      event.preventDefault();
-
-      const nama = document.getElementById("namaMurid").value.trim();
-      const jawapan1 = document.getElementById("jawapan1").value.trim();
-      const jawapan2 = document.getElementById("jawapan2").value.trim();
-
-      if (!nama || !jawapan1 || !jawapan2) {
-        status.textContent = "Sila lengkapkan semua ruangan.";
+    if (!nama || !jawapan1 || !jawapan2) {
         status.style.color = "red";
+        status.textContent = "Sila lengkapkan nama dan kedua-dua jawapan dahulu.";
         return;
-      }
+    }
 
-      const data = {
+    const data = {
         nama: nama,
         jawapan1: jawapan1,
         jawapan2: jawapan2
-      };
+    };
 
-      butang.disabled = true;
-      butang.textContent = "Sedang menghantar...";
-      status.textContent = "Sedang menghantar jawapan...";
-      status.style.color = "#1877f2";
+    butang.disabled = true;
+    butang.textContent = "SEDANG MENGHANTAR...";
+    status.style.color = "#555";
+    status.textContent = "Sedang menghantar jawapan...";
 
-      fetch(URL_APPS_SCRIPT, {
+    fetch(URL_APPS_SCRIPT, {
         method: "POST",
         mode: "no-cors",
         headers: {
-          "Content-Type": "text/plain;charset=utf-8"
+            "Content-Type": "text/plain;charset=utf-8"
         },
         body: JSON.stringify(data)
-      })
-      .then(function() {
-        status.textContent = "Permintaan dihantar. Sila semak sama ada jawapan telah masuk ke Google Sheets.";
+    })
+    .then(() => {
+
         status.style.color = "green";
+        status.textContent = "Permintaan telah dihantar. Sila semak Google Sheets.";
 
-        paparKomen(nama, jawapan1, jawapan2);
-        borang.reset();
-      })
-      .catch(function(error) {
-        status.textContent = "Tidak berjaya menghantar. Sila cuba lagi.";
-        status.style.color = "red";
-        console.error(error);
-      })
-      .finally(function() {
+        const paparan = document.getElementById("paparanJawapan");
+
+        const komen = document.createElement("div");
+        komen.className = "comment";
+
+        const avatar = document.createElement("div");
+        avatar.className = "avatar";
+        avatar.textContent = "👤";
+
+        const kandungan = document.createElement("div");
+        kandungan.className = "comment-content";
+
+        const namaMurid = document.createElement("strong");
+        namaMurid.textContent = nama;
+
+        const teks1 = document.createElement("p");
+        teks1.textContent = "1. " + jawapan1;
+
+        const teks2 = document.createElement("p");
+        teks2.textContent = "2. " + jawapan2;
+
+        kandungan.appendChild(namaMurid);
+        kandungan.appendChild(teks1);
+        kandungan.appendChild(teks2);
+
+        komen.appendChild(avatar);
+        komen.appendChild(kandungan);
+
+        paparan.innerHTML = "";
+        paparan.appendChild(komen);
+
+        document.getElementById("namaMurid").value = "";
+        document.getElementById("jawapan1").value = "";
+        document.getElementById("jawapan2").value = "";
+
         butang.disabled = false;
-        butang.textContent = "Hantar Jawapan";
-      });
+        butang.textContent = "HANTAR JAWAPAN";
+
+    })
+    .catch(() => {
+
+        status.style.color = "red";
+        status.textContent = "Penghantaran gagal. Sila cuba lagi.";
+
+        butang.disabled = false;
+        butang.textContent = "HANTAR JAWAPAN";
+
     });
-
-    function paparKomen(nama, jawapan1, jawapan2) {
-      const senarai = document.getElementById("senaraiKomen");
-
-      const item = document.createElement("div");
-      item.className = "komen-item";
-
-      const namaPapar = document.createElement("div");
-      namaPapar.className = "nama-papar";
-      namaPapar.textContent = "👤 " + nama;
-
-      const soalan1 = document.createElement("p");
-      soalan1.textContent = "1. " + jawapan1;
-
-      const soalan2 = document.createElement("p");
-      soalan2.textContent = "2. " + jawapan2;
-
-      const reaksi = document.createElement("div");
-      reaksi.className = "reaksi";
-      reaksi.textContent = "👍 Suka  ·  💬 Balas";
-
-      item.appendChild(namaPapar);
-      item.appendChild(soalan1);
-      item.appendChild(soalan2);
-      item.appendChild(reaksi);
-
-      if (senarai.querySelector("p")) {
-        senarai.innerHTML = "";
-      }
-
-      senarai.prepend(item);
-    }
-  </script>
+}
+</script>
 
 </body>
 </html>
