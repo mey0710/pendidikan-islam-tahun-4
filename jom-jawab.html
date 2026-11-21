@@ -1,0 +1,51 @@
+function hantarSemua() {
+  const nama = document.getElementById("namaMurid").value.trim();
+  const jawapan1 = document.getElementById("jawapan1").value.trim();
+  const jawapan2 = document.getElementById("jawapan2").value.trim();
+
+  const status = document.getElementById("statusHantar");
+  const butang = document.getElementById("butangHantar");
+
+  if (!nama  !jawapan1  !jawapan2) {
+    status.textContent = "Sila lengkapkan nama dan kedua-dua jawapan dahulu.";
+    status.style.color = "red";
+    return;
+  }
+
+  butang.disabled = true;
+  status.textContent = "Sedang menghantar jawapan...";
+  status.style.color = "#555";
+
+  const data = {
+    nama: nama,
+    jawapan1: jawapan1,
+    jawapan2: jawapan2
+  };
+
+  fetch(URL_APPS_SCRIPT, {
+    method: "POST",
+    mode: "no-cors",
+    headers: {
+      "Content-Type": "text/plain;charset=utf-8"
+    },
+    body: JSON.stringify(data)
+  })
+  .then(() => {
+    status.textContent = "Jawapan telah dihantar. Terima kasih!";
+    status.style.color = "green";
+
+    document.getElementById("papar1").textContent = jawapan1;
+    document.getElementById("papar2").textContent = jawapan2;
+
+    butang.disabled = false;
+  })
+  .catch((error) => {
+    status.textContent = "Penghantaran gagal. Sila cuba lagi.";
+    status.style.color = "red";
+    butang.disabled = false;
+  });
+}
+</script>
+
+</body>
+</html>
