@@ -1,0 +1,116 @@
+
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Soalan Fizi</title>
+
+<style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 20px;
+  font-family: Arial, sans-serif;
+  background: linear-gradient(135deg, #d9efff, #f7e8d7);
+  text-align: center;
+}
+
+.card {
+  max-width: 520px;
+  margin: auto;
+  padding: 28px;
+  background: white;
+  border-radius: 24px;
+  box-shadow: 0 12px 35px #34495e22;
+}
+
+h2 {
+  color: #24527a;
+}
+
+button {
+  border: 0;
+  border-radius: 30px;
+  padding: 15px 25px;
+  background: #2677b8;
+  color: white;
+  font-size: 17px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+#question {
+  display: none;
+  margin-top: 24px;
+  padding: 20px;
+  border-radius: 18px;
+  background: #fff4d6;
+  color: #654516;
+  font-size: 21px;
+  font-weight: bold;
+}
+
+#status {
+  color: #555;
+  font-size: 13px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="card">
+  <h2>💬 Soalan Fizi</h2>
+
+  <p>Tekan butang untuk mendengar soalan Fizi.</p>
+
+  <button id="playBtn">
+    🔊 KLIK UNTUK DENGAR SOALAN
+  </button>
+
+  <div id="question">
+    “Kawan-kawan, tahu tak apa maksud tetamu?”
+  </div>
+
+  <p id="status">Tekan butang untuk mula.</p>
+
+  <audio id="audioFizi" preload="auto">
+    <source src="https://cdn.jsdelivr.net/gh/mey0710/pendidikan-islam-tahun-4@main/soalan_fizi.mp3" type="audio/mpeg">
+  </audio>
+</div>
+
+<script>
+const audio = document.getElementById("audioFizi");
+const button = document.getElementById("playBtn");
+const question = document.getElementById("question");
+const status = document.getElementById("status");
+
+button.addEventListener("click", function() {
+  question.style.display = "block";
+
+  audio.play().then(function() {
+    button.textContent = "⏸️ JEDA SUARA FIZI";
+    status.textContent = "🔊 Suara Fizi sedang dimainkan.";
+  }).catch(function() {
+    status.textContent = "⚠️ Audio gagal dimainkan. Semak fail MP3 di GitHub.";
+  });
+});
+
+audio.addEventListener("ended", function() {
+  button.textContent = "🔁 DENGAR SEMULA";
+  status.textContent = "Suara Fizi selesai.";
+});
+
+button.addEventListener("click", function() {
+  if (!audio.paused) {
+    // Butang ditekan ketika audio sedang dimainkan
+  }
+});
+</script>
+
+</body>
+</html>
